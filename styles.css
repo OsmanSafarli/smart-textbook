@@ -33,4 +33,26 @@ p {
     text-align: center;
     font-size: 18px;
     margin-top: 10px;
+}body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+}
+
+h1 {
+    font-family: 'Lobster', cursive; /* Используем шрифт Lobster */
+    text-align: center;
+    font-size: 48px; /* Размер шрифта */
+    margin-top: 50px; /* Отступ сверху */
+    color: #ffffff; /* Цвет текста */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта глубины */
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #ffffff;
 }
