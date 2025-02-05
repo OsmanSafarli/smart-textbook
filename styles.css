@@ -1,19 +1,29 @@
 /* Основные стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8)), url('background-image.jpg');
+    background-size: cover; /* Масштабирование изображения */
+    background-position: center; /* Центрирование изображения */
+    background-repeat: no-repeat; /* Запрет повторения изображения */
     color: #ffffff;
     line-height: 1.6;
 }
 
+/* Заголовки */
 header h1 {
-    font-family: 'Lobster', cursive;
-    text-align: center;
     font-size: 48px;
+    font-weight: 700;
+    text-align: center;
     margin-top: 50px;
     animation: fadeIn 2s ease-in-out;
+}
+
+h2, h3 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 700;
+    text-align: center;
 }
 
 main {
@@ -118,4 +128,42 @@ footer {
 
 .budget-table tr:last-child td {
     border-bottom: none; /* Убираем границу для последней строки */
+}
+/* Стили для ссылок */
+.section-link {
+    text-decoration: none;
+    color: #ffffff;
+    transition: color 0.3s ease-in-out;
+}
+
+.section-link:hover {
+    color: #ffcc00;
+}
+/* Стили для контейнера с текстом и изображением */
+.image-text-container {
+    display: flex;
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    gap: 20px; /* Расстояние между текстом и изображением */
+    margin-bottom: 20px;
+}
+
+/* Стили для изображения */
+.definition-image {
+    max-width: 300px; /* Максимальная ширина изображения */
+    height: auto; /* Сохранение пропорций */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
+    transition: transform 0.3s ease-in-out; /* Плавное увеличение при наведении */
+}
+
+.definition-image:hover {
+    transform: scale(1.05); /* Увеличение изображения при наведении */
+}
+/* Дополнительные стили для секций */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
 }
