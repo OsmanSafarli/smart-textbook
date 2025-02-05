@@ -4,7 +4,6 @@ console.log('Привет из SMART учебника!');
 // Ожидание полной загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM полностью загружен!');
-    alert('Добро пожаловать в SMART Учебник!');
 });
 
 /**
