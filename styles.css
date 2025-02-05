@@ -77,3 +77,62 @@ h1 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта глубины */
     animation: fadeIn 2s ease-in-out; /* Применяем анимацию */
 }
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header h1 {
+    font-family: 'Lobster', cursive;
+    text-align: center;
+    font-size: 48px;
+    margin-top: 50px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
+}
+
+section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #ffcc00; /* Золотистый цвет для заголовков разделов */
+}
+
+section p {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
