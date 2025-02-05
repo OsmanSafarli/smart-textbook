@@ -1,27 +1,4 @@
-code index.html
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART Учебник</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART Учебник</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h1>Основы финансовой грамотности</h1>
-    <p>Здесь вы найдете полезные материалы для обучения.</p>
-    <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -44,8 +21,60 @@ code index.html
 
         <!-- Раздел 2: Бюджетирование -->
         <section id="budgeting">
-            <h2>Бюджетирование</h2>
-            <p>Научитесь планировать свои доходы и расходы, чтобы всегда оставаться в плюсе.</p>
+            <h2 onclick="toggleAccordion('budget-content')">Бюджетирование</h2>
+            <div id="budget-content" class="accordion-content">
+                <p>Бюджетирование — это процесс планирования доходов и расходов для достижения финансовых целей. Основная цель — контролировать свои финансы и избегать ненужных трат.</p>
+                <!-- Список советов по бюджетированию -->
+                <h3>Основные принципы бюджетирования:</h3>
+                <ul>
+                    <li><strong>50/30/20 правило:</strong> 50% доходов на основные нужды, 30% на желания, 20% на сбережения.</li>
+                    <li><strong>Фиксируйте все расходы:</strong> Ведите учет всех трат, чтобы понимать, куда уходят деньги.</li>
+                    <li><strong>Создайте резервный фонд:</strong> Откладывайте минимум 3–6 месячных доходов на случай непредвиденных ситуаций.</li>
+                    <li><strong>Избегайте долгов:</strong> Старайтесь не брать кредиты без крайней необходимости.</li>
+                </ul>
+                <!-- Пример таблицы бюджета -->
+                <h3>Пример простого бюджета:</h3>
+                <table class="budget-table">
+                    <thead>
+                        <tr>
+                            <th>Категория</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Доходы</td>
+                            <td>100 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Жилье</td>
+                            <td>30 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Питание</td>
+                            <td>20 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Транспорт</td>
+                            <td>10 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Сбережения</td>
+                            <td>20 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Развлечения</td>
+                            <td>15 000 ₽</td>
+                        </tr>
+                        <tr>
+                            <td>Остаток</td>
+                            <td>5 000 ₽</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Изображение -->
+                <img src="assets/images/budgeting.jpg" alt="Бюджетирование" class="section-image">
+            </div>
         </section>
 
         <!-- Раздел 3: Сбережения -->
@@ -65,6 +94,7 @@ code index.html
         <p>&copy; 2023 SMART Учебник</p>
     </footer>
 
+    <!-- Подключение скрипта -->
     <script src="script.js"></script>
 </body>
 </html>
