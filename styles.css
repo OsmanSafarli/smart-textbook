@@ -1,82 +1,3 @@
-code styles.css
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-}
-
-h1 {
-    color: #007BFF;
-    text-align: center;
-    margin-top: 20px;
-}
-
-p {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 10px;
-}body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Градиент от фиолетового к синему */
-    color: #ffffff; /* Белый цвет текста для контраста */
-}
-
-h1 {
-    text-align: center;
-    margin-top: 20px;
-}
-
-p {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 10px;
-}body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #ffffff;
-}
-
-h1 {
-    font-family: 'Lobster', cursive; /* Используем шрифт Lobster */
-    text-align: center;
-    font-size: 48px; /* Размер шрифта */
-    margin-top: 50px; /* Отступ сверху */
-    color: #ffffff; /* Цвет текста */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта глубины */
-}
-
-p {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 20px;
-    color: #ffffff;
-}
-/* Анимация появления */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px); /* Сдвигаем текст вверх */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0); /* Возвращаем текст на место */
-    }
-}
-
-h1 {
-    font-family: 'Lobster', cursive; /* Используем шрифт Lobster */
-    text-align: center;
-    font-size: 48px; /* Размер шрифта */
-    margin-top: 50px; /* Отступ сверху */
-    color: #ffffff; /* Цвет текста */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта глубины */
-    animation: fadeIn 2s ease-in-out; /* Применяем анимацию */
-}
 /* Основные стили */
 body {
     font-family: Arial, sans-serif;
@@ -111,6 +32,14 @@ section h2 {
     font-size: 32px;
     margin-bottom: 10px;
     color: #ffcc00; /* Золотистый цвет для заголовков разделов */
+    cursor: pointer; /* Делаем заголовок кликабельным */
+    user-select: none; /* Запрещаем выделение текста */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+section h2:hover {
+    color: #ffffff;
+    transform: scale(1.05);
 }
 
 section p {
@@ -135,4 +64,58 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Стили для изображений в разделах */
+.section-image {
+    display: block; /* Убираем отступы вокруг изображения */
+    max-width: 100%; /* Изображение не выходит за пределы контейнера */
+    height: auto; /* Сохраняем пропорции */
+    margin-top: 20px; /* Отступ сверху */
+    border-radius: 10px; /* Закругляем углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
+    opacity: 0.8; /* Делаем изображение немного прозрачным */
+    transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
+}
+
+.section-image:hover {
+    opacity: 1; /* Полностью непрозрачное при наведении */
+}
+
+/* Стили для аккордеона */
+.accordion-content {
+    max-height: 0; /* Скрываем контент по умолчанию */
+    overflow: hidden; /* Прячем переполнение */
+    transition: max-height 0.3s ease-in-out; /* Плавное раскрытие */
+}
+
+.accordion-content.open {
+    max-height: 500px; /* Максимальная высота для раскрытого контента */
+}
+
+/* Стили для таблицы */
+.budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.budget-table th,
+.budget-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.budget-table th {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.budget-table tr:last-child td {
+    border-bottom: none; /* Убираем границу для последней строки */
 }
