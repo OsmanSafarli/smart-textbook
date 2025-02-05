@@ -56,3 +56,24 @@ p {
     margin-top: 20px;
     color: #ffffff;
 }
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px); /* Сдвигаем текст вверх */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Возвращаем текст на место */
+    }
+}
+
+h1 {
+    font-family: 'Lobster', cursive; /* Используем шрифт Lobster */
+    text-align: center;
+    font-size: 48px; /* Размер шрифта */
+    margin-top: 50px; /* Отступ сверху */
+    color: #ffffff; /* Цвет текста */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для эффекта глубины */
+    animation: fadeIn 2s ease-in-out; /* Применяем анимацию */
+}
