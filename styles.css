@@ -1,169 +1,354 @@
-/* Основные стили */
-body {
-    font-family: 'Montserrat', Arial, sans-serif;
+/* Глобальные настройки */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, rgba(106, 17, 203, 0.8), rgba(37, 117, 252, 0.8)), url('background-image.jpg');
-    background-size: cover; /* Масштабирование изображения */
-    background-position: center; /* Центрирование изображения */
-    background-repeat: no-repeat; /* Запрет повторения изображения */
-    color: #ffffff;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
     line-height: 1.6;
+    color: #333;
+    background-color: #fff;
 }
 
-/* Заголовки */
-header h1 {
-    font-size: 48px;
-    font-weight: 700;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+    background: linear-gradient(135deg, #003d7c, #0074d9);
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
-    margin-top: 50px;
-    animation: fadeIn 2s ease-in-out;
 }
 
-h2, h3 {
-    font-family: 'Montserrat', Arial, sans-serif;
-    font-weight: 700;
-    text-align: center;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 40px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
-}
-
-section h2 {
-    font-size: 32px;
+.header h1 {
+    font-size: 2rem;
     margin-bottom: 10px;
-    color: #ffcc00; /* Золотистый цвет для заголовков разделов */
-    cursor: pointer; /* Делаем заголовок кликабельным */
-    user-select: none; /* Запрещаем выделение текста */
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-section h2:hover {
-    color: #ffffff;
-    transform: scale(1.05);
-}
-
-section p {
-    font-size: 18px;
-    color: #ffffff;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    margin-top: 40px;
-}
-
-/* Анимация появления */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Стили для изображений в разделах */
-.section-image {
-    display: block; /* Убираем отступы вокруг изображения */
-    max-width: 100%; /* Изображение не выходит за пределы контейнера */
-    height: auto; /* Сохраняем пропорции */
-    margin-top: 20px; /* Отступ сверху */
-    border-radius: 10px; /* Закругляем углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
-    opacity: 0.8; /* Делаем изображение немного прозрачным */
-    transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
-}
-
-.section-image:hover {
-    opacity: 1; /* Полностью непрозрачное при наведении */
-}
-
-/* Стили для аккордеона */
-.accordion-content {
-    max-height: 0; /* Скрываем контент по умолчанию */
-    overflow: hidden; /* Прячем переполнение */
-    transition: max-height 0.3s ease-in-out; /* Плавное раскрытие */
-}
-
-.accordion-content.open {
-    max-height: 500px; /* Максимальная высота для раскрытого контента */
-}
-
-/* Стили для таблицы */
-.budget-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+/* Основной контент */
+.section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #003d7c;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
     overflow: hidden;
 }
 
-.budget-table th,
-.budget-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.budget-table th {
-    background-color: rgba(255, 255, 255, 0.2);
+.accordion-header {
+    background-color: #0074d9;
+    color: #fff;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #ffcc00;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.budget-table tr:last-child td {
-    border-bottom: none; /* Убираем границу для последней строки */
-}
-/* Стили для ссылок */
-.section-link {
-    text-decoration: none;
-    color: #ffffff;
-    transition: color 0.3s ease-in-out;
+.accordion-header:hover {
+    background-color: #003d7c;
 }
 
-.section-link:hover {
-    color: #ffcc00;
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #fff;
+    transition: max-height 0.3s ease-in-out;
 }
-/* Стили для контейнера с текстом и изображением */
-.image-text-container {
-    display: flex;
-    align-items: flex-start; /* Выравнивание по верхнему краю */
-    gap: 20px; /* Расстояние между текстом и изображением */
+
+.accordion-content p,
+.accordion-content ul,
+.accordion-content ol {
+    margin: 15px 0;
+}
+
+.accordion-content blockquote {
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-left: 5px solid #0074d9;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Подвал */
+.footer {
+    background-color: #003d7c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+/* Глобальные настройки */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+    background: linear-gradient(135deg, #003d7c, #0074d9);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Основной контент */
+.section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #003d7c;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: #0074d9;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.accordion-header:hover {
+    background-color: #003d7c;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #fff;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-content p,
+.accordion-content ul,
+.accordion-content ol {
+    margin: 15px 0;
+}
+
+.accordion-content blockquote {
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-left: 5px solid #0074d9;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Подвал */
+.footer {
+    background-color: #003d7c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 0.9rem;
+}
+/* Глобальные настройки */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+.header {
+    background: linear-gradient(135deg, #003d7c, #0074d9);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Главный баннер */
+.hero {
+    background: url('banner.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
     margin-bottom: 20px;
 }
 
-/* Стили для изображения */
-.definition-image {
-    max-width: 300px; /* Максимальная ширина изображения */
-    height: auto; /* Сохранение пропорций */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
-    transition: transform 0.3s ease-in-out; /* Плавное увеличение при наведении */
+.button {
+    display: inline-block;
+    background-color: #0074d9;
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.definition-image:hover {
-    transform: scale(1.05); /* Увеличение изображения при наведении */
+.button:hover {
+    background-color: #003d7c;
 }
-/* Дополнительные стили для секций */
-section {
-    margin-bottom: 40px;
+
+/* Основной контент */
+.section {
+    margin: 40px 0;
     padding: 20px;
+    background-color: #f9f9f9;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для эффекта глубины */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #003d7c;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: #0074d9;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.accordion-header:hover {
+    background-color: #003d7c;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 15px;
+    background-color: #fff;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.accordion-content li {
+    margin: 10px 0;
+}
+
+.accordion-content a {
+    color: #0074d9;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.accordion-content a:hover {
+    color: #003d7c;
+}
+
+/* Подвал */
+.footer {
+    background-color: #003d7c;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 0.9rem;
 }

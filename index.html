@@ -3,68 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMART Учебник</title>
+    <title>SMART Учебник: Финансовая Грамотность</title>
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="styles.css">
-    <!-- Подключение шрифта Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Финансовая грамотность — ключ к успеху</h1>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <h1>SMART Учебник: Финансовая Грамотность</h1>
+        </div>
     </header>
 
-    <main>
-        <!-- Глава 1: Деньги: слуга или хозяин -->
-        <section id="chapter-1">
-            <h2>Тема 1. Деньги: слуга или хозяин</h2>
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container">
+            <h2>Узнайте, как использовать деньги правильно</h2>
+            <p>Финансовая грамотность — это ключ к вашему будущему!</p>
+            <a href="#content" class="button">Начать обучение</a>
+        </div>
+    </section>
 
-            <!-- Подраздел 1.1: Зачем нужны деньги и как их использовать -->
-            <div class="chapter-section">
-                <a href="section-1-1.html" target="_blank" class="section-link">
-                    <h3>1.1. Зачем нужны деньги и как их использовать</h3>
-                </a>
+    <!-- Основной контент -->
+    <main class="content" id="content">
+        <section class="section">
+            <h2>Темы для изучения</h2>
+
+            <!-- Аккордеон 1 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Деньги: слуга или хозяин
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li><a href="topic1-1.html">1.1. Зачем нужны деньги и как их использовать</a></li>
+                        <li><a href="topic1-2.html">1.2. Современные деньги: какие они бывают</a></li>
+                        <li><a href="topic1-3.html">1.3. Банковские карты и их использование для платежей</a></li>
+                        <li><a href="topic1-4.html">1.4. Иностранная валюта как деньги: зачем она нужна</a></li>
+                        <li><a href="topic1-5.html">1.5. Деньги и цены. Как инфляция обесценивает деньги</a></li>
+                        <li><a href="topic1-6.html">1.6. Деньги рождают деньги: как их накапливать</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Подраздел 1.2: Современные деньги: какие они бывают -->
-            <div class="chapter-section">
-                <a href="section-1-2.html" target="_blank" class="section-link">
-                    <h3>1.2. Современные деньги: какие они бывают</h3>
-                </a>
-            </div>
-
-            <!-- Подраздел 1.3: Банковские карты и их использование для платежей -->
-            <div class="chapter-section">
-                <a href="section-1-3.html" target="_blank" class="section-link">
-                    <h3>1.3. Банковские карты и их использование для платежей</h3>
-                </a>
-            </div>
-
-            <!-- Подраздел 1.4: Иностранная валюта как деньги: зачем она нужна -->
-            <div class="chapter-section">
-                <a href="section-1-4.html" target="_blank" class="section-link">
-                    <h3>1.4. Иностранная валюта как деньги: зачем она нужна</h3>
-                </a>
-            </div>
-
-            <!-- Подраздел 1.5: Деньги и цены. Как инфляция обесценивает деньги -->
-            <div class="chapter-section">
-                <a href="section-1-5.html" target="_blank" class="section-link">
-                    <h3>1.5. Деньги и цены. Как инфляция обесценивает деньги</h3>
-                </a>
-            </div>
-
-            <!-- Подраздел 1.6: Деньги рождают деньги: как их накапливать -->
-            <div class="chapter-section">
-                <a href="section-1-6.html" target="_blank" class="section-link">
-                    <h3>1.6. Деньги рождают деньги: как их накапливать</h3>
-                </a>
+            <!-- Аккордеон 2 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Банки и финансы
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li><a href="#">2.1. Как работают банки</a></li>
+                        <li><a href="#">2.2. Кредиты и займы</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 SMART Учебник</p>
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SMART Учебник. Все права защищены.</p>
+        </div>
     </footer>
+
+    <script>
+        // Функция для переключения аккордеона
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null; // Скрыть содержимое
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px"; // Показать содержимое
+            }
+        }
+    </script>
 </body>
 </html>

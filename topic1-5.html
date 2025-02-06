@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.5. Деньги и цены. Как инфляция обесценивает деньги</title>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <h1>SMART Учебник: Финансовая Грамотность</h1>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="content">
+        <section class="section">
+            <h2>1.5. Деньги и цены. Как инфляция обесценивает деньги</h2>
+
+            <!-- Вкладка 1 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Что понимают под инфляцией?
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Инфляция – это устойчивый рост цен внутри страны на большинство товаров (товарных групп), услуг или работ, который приводит к обесцениванию денег (национальной валюты).
+                    </p>
+                    <p>
+                        Например, если стоимость 10 поездок на метро в начале года составляла 500 рублей, а через год увеличилась до 570 рублей, то теперь на 500 рублей можно купить только 8 поездок вместо 10.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Вкладка 2 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Индекс потребительских цен и инфляция: в чем разница?
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Индекс потребительских цен (ИПЦ) показывает, во сколько раз выросли цены на потребительскую корзину за определенный период времени. Он отражает среднее изменение стоимости денег, которые уплачивает потребитель за определенный набор товаров и услуг.
+                    </p>
+                    <blockquote>
+                        <strong>Формула:</strong><br>
+                        Уровень инфляции = Индекс инфляции – 1<br>
+                        или<br>
+                        Уровень инфляции = Индекс потребительских цен — 100%.
+                    </blockquote>
+                    <p>
+                        Например, если индекс потребительских цен за год составил 1,1956, то уровень инфляции равен 16,36%.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Вкладка 3 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Как оценить свои доходы в реальном выражении?
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Для оценки реальных доходов необходимо учитывать влияние инфляции. Если номинальные доходы растут медленнее, чем инфляция, то покупательная способность снижается.
+                    </p>
+                    <p>
+                        Например, если ваш доход увеличился на 5%, а инфляция составила 7%, то ваши реальные доходы уменьшились на 2%.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Вкладка 4 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Причины инфляции
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Инфляция возникает по разным причинам:
+                    </p>
+                    <ul>
+                        <li>Устойчивое повышение заработной платы в отдельных секторах экономики.</li>
+                        <li>Индексация социальных выплат населению.</li>
+                        <li>Рост объемов государственных закупок и бюджетных расходов.</li>
+                        <li>Чрезмерное кредитование населения и компаний.</li>
+                        <li>Снижение курса национальной валюты.</li>
+                        <li>Повышение тарифов на услуги естественных монополий.</li>
+                    </ul>
+                    <p>
+                        Эти факторы создают избыточный денежный спрос или увеличивают издержки производителей, что приводит к росту цен.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Вкладка 5 -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    Пример расчета инфляции
+                </button>
+                <div class="accordion-content">
+                    <p>
+                        Рост цен на бензин составлял:
+                    </p>
+                    <ul>
+                        <li>В первом квартале: 0,5% ежемесячно.</li>
+                        <li>Во втором квартале: 0,7% ежемесячно.</li>
+                        <li>В третьем квартале: 1%, 1,1%, 1,2% соответственно.</li>
+                        <li>В четвертом квартале: 1,2% ежемесячно.</li>
+                    </ul>
+                    <p>
+                        Тогда индекс роста цен на бензин за год составит:
+                    </p>
+                    <blockquote>
+                        Индекс цен = (1 + 0,005)<sup>3</sup> * (1 + 0,007)<sup>3</sup> * (1 + 0,01) * (1 + 0,011) * (1 + 0,012) * (1 + 0,012)<sup>3</sup> = 1,110.
+                    </blockquote>
+                    <p>
+                        Следовательно, уровень инфляции составил 10%.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SMART Учебник. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Функция для переключения аккордеона
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null; // Скрыть содержимое
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px"; // Показать содержимое
+            }
+        }
+    </script>
+</body>
+</html>
