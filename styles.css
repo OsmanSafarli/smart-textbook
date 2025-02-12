@@ -1,583 +1,199 @@
-/* Глобальные настройки */
+/* Глобальные стили */
+:root {
+    --primary: #340aeed8;
+    --accent: #FF6B00;
+    --background: #ffffff;
+    --text: #333333;
+    --card-background: #f8f9fa;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
     line-height: 1.6;
-    color: #333;
-    background-color: #fff;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Шапка */
-.header {
-    background: linear-gradient(135deg, #1e0369a6, #0074d9);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-/* Основной контент */
-.section {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #003d7c;
-}
-
-.accordion-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.accordion-header {
-    background-color: #0074d9;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.accordion-header:hover {
-    background-color: #003d7c;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 15px;
-    background-color: #fff;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.accordion-content p {
-    text-align: justify; /* Выравнивание текста по ширине */
-    margin: 15px 0; /* Отступы между параграфами */
-}
-
-.accordion-content blockquote {
-    background-color: #f0f8ff;
-    padding: 15px;
-    border-left: 5px solid #0074d9;
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-/* Подвал */
-.footer {
-    background-color: #003d7c;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.footer p {
-    font-size: 0.9rem;
-}
-/* Глобальные настройки */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Шапка */
-.header {
-    background: linear-gradient(135deg, #003d7c, #0074d9);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-/* Основной контент */
-.section {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #003d7c;
-}
-
-.accordion-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.accordion-header {
-    background-color: #0074d9;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.accordion-header:hover {
-    background-color: #003d7c;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 15px;
-    background-color: #fff;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.accordion-content p,
-.accordion-content ul,
-.accordion-content ol {
-    margin: 15px 0;
-}
-
-.accordion-content blockquote {
-    background-color: #f0f8ff;
-    padding: 15px;
-    border-left: 5px solid #0074d9;
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-/* Подвал */
-.footer {
-    background-color: #003d7c;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.footer p {
-    font-size: 0.9rem;
-}
-/* Глобальные настройки */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Шапка */
-.header {
-    background: linear-gradient(135deg, #003d7c, #0074d9);
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+    padding: 0 1.5rem;
 }
 
 /* Главный баннер */
 .hero {
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('money-image.jpg') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    padding: 100px 20px;
-    height: 400px; /* Высота баннера */
     overflow: hidden;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2; /* Размещаем текст поверх изображения */
+    height: 60vh;
+    background: linear-gradient(rgba(19, 3, 240, 0.75), rgba(36, 4, 218, 0.7)), url('finance-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
+    padding: 4rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    margin-bottom: 2rem;
+}
+
+/* Анимированные изображения */
+.animated-image {
+    position: absolute;
+    width: 150px; /* Базовый размер */
+    height: auto;
+    animation: float 5s infinite ease-in-out;
+}
+
+.image-1 { bottom: 20%; left: 10%; width: 15%  }
+.image-2 { bottom: 30%; right: 10%; width: 15%  }
+.image-3 { top: 20%; left: 40%; width: 5% }
+.image-4 { bottom: 40%; right: 70%; width: 8%  }
+.image-5 { top: 62%; left: 5%; width: 15% }
+.image-6 { bottom: 75%; left: 60%; transform: translateX(-50%); width: 10% }
+.image-7 { top: 80%; left: 75%; width: 28% }
+.image-8 { top: 87%; left: 65%; width: 24% }
+.image-9 { top: 93%; left: 58%; width: 20% }
+.image-10 { top: 82%; left: 48%; width: 28% }
+.image-11 { top: 88%; left: 36%; width: 28% }
+.image-12 { top: 94%; left: 30%; width: 21% }
+.image-13 { top: 81%; left: 15%; width: 32% }
+.image-14 { top: 89%; left: 5%; width: 25% }
+.image-15 { top: 85%; left: -5%; width: 25% }
+.image-16 { top: 10%; left: 84%; width: 5% }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 /* Основной контент */
+.main-content {
+    position: relative;
+    background: linear-gradient(rgba(19, 3, 240, 0.1), rgba(36, 4, 218, 0.1));
+    padding: 4rem 0;
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
 .section {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #003d7c;
-}
-
-.accordion-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.accordion-header {
-    background-color: #0074d9;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.accordion-header:hover {
-    background-color: #003d7c;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 15px;
-    background-color: #fff;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.accordion-content ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.accordion-content li {
-    margin: 10px 0;
-}
-
-.accordion-content a {
-    color: #0074d9;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.accordion-content a:hover {
-    color: #003d7c;
-}
-
-/* Подвал */
-.footer {
-    background-color: #003d7c;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.footer p {
-    font-size: 0.9rem;
-}
-/* Глобальные настройки */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-}
-
-.container {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Шапка */
-.header {
-    background: linear-gradient(135deg, #003d7c, #0074d9);
-    color: #fff;
-    padding: 20px 0;
     text-align: center;
 }
 
-.header h1 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+.section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: var(--primary);
+    margin-bottom: 2rem;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Анимация текста */
-.animated-text {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease-in-out forwards;
-}
-
-.animated-text:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.animated-text:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.animated-button {
-    opacity: 0;
-    transform: scale(0.8);
-    animation: fadeInScale 1s ease-in-out forwards;
-    animation-delay: 0.6s;
-}
-
-/* Анимация изображения */
-.animated-image {
-    animation: floatImage 3s ease-in-out infinite;
-}
-
-/* Аккордеоны */
-.accordion-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.accordion-header {
-    background-color: #0074d9;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.accordion-header:hover {
-    background-color: #003d7c;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 15px;
-    background-color: #fff;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.accordion-content ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.accordion-content li {
-    margin: 10px 0;
-}
-
-.accordion-content a {
-    color: #0074d9;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-}
-
-.accordion-content a:hover {
-    color: #003d7c;
-}
-
-/* Подвал */
-.footer {
-    background-color: #003d7c;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.footer p {
-    font-size: 0.9rem;
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2; /* Размещаем текст поверх изображения */
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-/* Анимация текста */
-.animated-text {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease-in-out forwards;
-}
-
-.animated-text:nth-child(1) {
-    animation-delay: 0.2s;
-}
-
-.animated-text:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.animated-button {
-    opacity: 0;
-    transform: scale(0.8);
-    animation: fadeInScale 1s ease-in-out forwards;
-    animation-delay: 0.6s;
-}
-
-/* Анимации */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}/* Стили для анимированного фона */
-.money-rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Размещаем фон за текстом */
-    pointer-events: none; /* Отключаем взаимодействие с фоном */
-}
-
-.money-rain::before,
-.money-rain::after {
-    content: '';
+/* Декоративные SVG */
+.decoration-icon {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: url('money-icon.png') no-repeat center/contain; /* Иконка банкноты или монеты */
-    opacity: 0.5;
-    animation: fall linear infinite;
+    opacity: 0.7;
+    z-index: -1;
+    animation: float 5s infinite ease-in-out;
 }
 
-/* Добавляем несколько падающих элементов */
-.money-rain::before {
-    top: -10%;
-    left: 10%;
-    animation-duration: 4s;
+.icon-money { bottom: 20%; left: 10%; }
+.icon-bank { bottom: 30%; right: 15%; }
+
+/* Аккордеоны */
+.accordion-item {
+    background: var(--card-background);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+    border: 1px solid #e0e0e0;
 }
 
-.money-rain::after {
-    top: -20%;
-    left: 70%;
-    animation-duration: 7s;
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--primary);
+    cursor: pointer;
+    border: none;
+    background: none;
+    text-align: left;
 }
 
-/* Анимация падения */
-@keyframes fall {
-    0% {
-        transform: translateY(-100%) rotate(0deg);
-        opacity: 0.5;
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 1.5rem;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.accordion-content li {
+    margin: 0.5rem 0;
+    padding: 0.8rem;
+    border-left: 3px solid var(--accent);
+    transition: background 0.2s ease;
+}
+
+.accordion-content li:hover {
+    background: rgba(0, 77, 152, 0.05);
+}
+
+.accordion-content a {
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+    font-size: 1.1rem;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
     }
-    100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
 
-/* Обновление стилей для секции */
-.section {
-    position: relative; /* Добавляем относительное позиционирование */
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Скрываем выходящие за пределы элементы */
-    z-index: 1; /* Текст поверх фона */
+    .animated-image {
+        width: 100px; /* Уменьшаем размер изображений */
+    }
+
+    .decoration-icon {
+        width: 40px;
+        height: 40px;
+    }
 }
