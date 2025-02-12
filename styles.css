@@ -31,7 +31,7 @@ body {
 .hero {
     position: relative;
     overflow: hidden;
-    height: 60vh;
+    height: 60vh; /* Адаптивная высота */
     background: linear-gradient(rgba(19, 3, 240, 0.75), rgba(36, 4, 218, 0.7)), url('finance-bg.jpg');
     background-size: cover;
     background-position: center;
@@ -49,41 +49,41 @@ body {
 }
 
 .hero h2 {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2rem, 6vw, 3.5rem); /* Адаптивный размер текста */
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
 }
 
 .hero p {
-    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Адаптивный размер текста */
     margin-bottom: 2rem;
 }
 
 /* Анимированные изображения */
 .animated-image {
     position: absolute;
-    width: 150px; /* Базовый размер */
+    width: 15%; /* Размер в процентах для адаптивности */
     height: auto;
     animation: float 5s infinite ease-in-out;
 }
 
-.image-1 { bottom: 20%; left: 10%; width: 15%  }
-.image-2 { bottom: 30%; right: 10%; width: 15%  }
-.image-3 { top: 20%; left: 40%; width: 5% }
-.image-4 { bottom: 40%; right: 70%; width: 8%  }
-.image-5 { top: 62%; left: 5%; width: 15% }
-.image-6 { bottom: 75%; left: 60%; transform: translateX(-50%); width: 10% }
-.image-7 { top: 80%; left: 75%; width: 28% }
-.image-8 { top: 87%; left: 65%; width: 24% }
-.image-9 { top: 93%; left: 58%; width: 20% }
-.image-10 { top: 82%; left: 48%; width: 28% }
-.image-11 { top: 88%; left: 36%; width: 28% }
-.image-12 { top: 94%; left: 30%; width: 21% }
-.image-13 { top: 81%; left: 15%; width: 32% }
-.image-14 { top: 89%; left: 5%; width: 25% }
-.image-15 { top: 85%; left: -5%; width: 25% }
-.image-16 { top: 10%; left: 84%; width: 5% }
+.image-1 { bottom: 20%; left: 10%; }
+.image-2 { bottom: 30%; right: 10%; }
+.image-3 { top: 20%; left: 40%; }
+.image-4 { bottom: 40%; right: 70%; }
+.image-5 { top: 62%; left: 5%; }
+.image-6 { bottom: 75%; left: 60%; transform: translateX(-50%); }
+.image-7 { top: 80%; left: 75%; }
+.image-8 { top: 87%; left: 65%; }
+.image-9 { top: 93%; left: 58%; }
+.image-10 { top: 82%; left: 48%; }
+.image-11 { top: 88%; left: 36%; }
+.image-12 { top: 94%; left: 30%; }
+.image-13 { top: 81%; left: 15%; }
+.image-14 { top: 89%; left: 5%; }
+.image-15 { top: 85%; left: -5%; }
+.image-16 { top: 10%; left: 84%; }
 
 @keyframes float {
     0%, 100% {
@@ -110,7 +110,7 @@ body {
 }
 
 .section-title {
-    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Адаптивный размер заголовка */
     color: var(--primary);
     margin-bottom: 2rem;
 }
@@ -143,7 +143,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Адаптивный размер текста */
     font-weight: 500;
     color: var(--primary);
     cursor: pointer;
@@ -179,21 +179,74 @@ body {
     text-decoration: none;
     color: var(--text);
     display: block;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Адаптивный размер текста */
 }
 
 /* Медиа-запросы */
 @media (max-width: 768px) {
     .hero h2 {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 5vw, 2rem); /* Уменьшаем заголовок */
+    }
+
+    .hero p {
+        font-size: clamp(1rem, 3vw, 1.5rem); /* Уменьшаем параграф */
     }
 
     .animated-image {
-        width: 100px; /* Уменьшаем размер изображений */
+        width: 10%; /* Уменьшаем размер изображений */
     }
 
     .decoration-icon {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .section-title {
+        font-size: clamp(1.2rem, 4vw, 2rem); /* Уменьшаем заголовок секции */
+    }
+
+    .accordion-header {
+        padding: 1rem; /* Уменьшаем отступы */
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .accordion-content a {
+        font-size: clamp(0.8rem, 1.5vw, 1rem); /* Уменьшаем текст ссылок */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 50vh; /* Уменьшаем высоту баннера */
+    }
+
+    .hero h2 {
+        font-size: clamp(1.2rem, 4vw, 1.8rem); /* Ещё меньше заголовок */
+    }
+
+    .hero p {
+        font-size: clamp(0.9rem, 3vw, 1.2rem); /* Ещё меньше параграф */
+    }
+
+    .animated-image {
+        width: 8%; /* Ещё меньше изображения */
+    }
+
+    .decoration-icon {
+        width: 25px;
+        height: 25px;
+    }
+
+    .section-title {
+        font-size: clamp(1rem, 3vw, 1.5rem); /* Ещё меньше заголовок секции */
+    }
+
+    .accordion-header {
+        padding: 0.8rem; /* Ещё меньше отступы */
+        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    }
+
+    .accordion-content a {
+        font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Ещё меньше текст ссылок */
     }
 }
