@@ -173,71 +173,85 @@ body {
     font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Адаптивный размер текста */
 }
 
-/* Медиа-запросы */
+/* Обновленные медиа-запросы */
 @media (max-width: 768px) {
+    .hero {
+        height: 50vh; /* Фиксированная высота */
+    }
+
     .hero h2 {
-        font-size: clamp(1.5rem, 5vw, 2rem); /* Уменьшаем заголовок */
+        font-size: 2rem; /* Фиксированный размер */
+        line-height: 1.3;
     }
 
     .hero p {
-        font-size: clamp(1rem, 3vw, 1.5rem); /* Уменьшаем параграф */
+        font-size: 1.1rem;
     }
 
     .animated-image {
-        width: 10%; /* Уменьшаем размер изображений */
-    }
-
-    .decoration-icon {
-        width: 30px;
-        height: 30px;
+        width: 20%; /* Сохраняем пропорции */
+        animation: float-mobile 4s infinite ease-in-out;
     }
 
     .section-title {
-        font-size: clamp(1.2rem, 4vw, 2rem); /* Уменьшаем заголовок секции */
+        font-size: 1.8rem;
     }
 
     .accordion-header {
-        padding: 1rem; /* Уменьшаем отступы */
-        font-size: clamp(0.9rem, 2vw, 1rem);
+        padding: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .accordion-content a {
-        font-size: clamp(0.8rem, 1.5vw, 1rem); /* Уменьшаем текст ссылок */
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .hero {
-        height: 50vh; /* Уменьшаем высоту баннера */
+        height: 40vh;
+        background-position: 60% center;
     }
 
     .hero h2 {
-        font-size: clamp(1.2rem, 4vw, 1.8rem); /* Ещё меньше заголовок */
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .hero p {
-        font-size: clamp(0.9rem, 3vw, 1.2rem); /* Ещё меньше параграф */
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .animated-image {
-        width: 8%; /* Ещё меньше изображения */
-    }
-
-    .decoration-icon {
-        width: 25px;
-        height: 25px;
+        width: 25%;
+        animation: float-mobile 3s infinite ease-in-out;
     }
 
     .section-title {
-        font-size: clamp(1rem, 3vw, 1.5rem); /* Ещё меньше заголовок секции */
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
     }
 
     .accordion-header {
-        padding: 0.8rem; /* Ещё меньше отступы */
-        font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .accordion-content li {
+        padding: 0.6rem;
     }
 
     .accordion-content a {
-        font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Ещё меньше текст ссылок */
+        font-size: 0.9rem;
+    }
+}
+
+@keyframes float-mobile {
+    0%, 100% {
+        transform: translateY(0) scale(0.9);
+    }
+    50% {
+        transform: translateY(-10px) scale(0.9);
     }
 }
