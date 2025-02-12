@@ -68,22 +68,13 @@ body {
     animation: float 5s infinite ease-in-out;
 }
 
-.image-1 { bottom: 20%; left: 10%; }
-.image-2 { bottom: 30%; right: 10%; }
-.image-3 { top: 20%; left: 40%; }
-.image-4 { bottom: 40%; right: 70%; }
+.image-1 { bottom: 20%; left: 15%; }
+.image-2 { bottom: 20%; right: 15%; }
+.image-3 { top: 40%; left: 40%; width: 8% }
+.image-4 { bottom: 40%; right: 60%; }
 .image-5 { top: 62%; left: 5%; }
-.image-6 { bottom: 75%; left: 60%; transform: translateX(-50%); }
-.image-7 { top: 80%; left: 75%; }
-.image-8 { top: 87%; left: 65%; }
-.image-9 { top: 93%; left: 58%; }
-.image-10 { top: 82%; left: 48%; }
-.image-11 { top: 88%; left: 36%; }
-.image-12 { top: 94%; left: 30%; }
-.image-13 { top: 81%; left: 15%; }
-.image-14 { top: 89%; left: 5%; }
-.image-15 { top: 85%; left: -5%; }
-.image-16 { top: 10%; left: 84%; }
+.image-6 { bottom: 65%; left: 60%; transform: translateX(-50%); }
+.image-16 { top: 10%; left: 80%;  width: 5% }
 
 @keyframes float {
     0%, 100% {
