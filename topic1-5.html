@@ -1,147 +1,131 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.5. Деньги и цены. Как инфляция обесценивает деньги</title>
-    <!-- Подключение стилей -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Подключение шрифтов -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Смарт Учебник по Финансовой Грамотности</title>
+    <style>
+        /* Подключение стилей из файла */
+        @charset "UTF-8";
+        .container.svelte-1vokldc {
+            width: 305px;
+            background-color: #0177a9;
+            box-sizing: content-box;
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.37);
+            border-radius: 16px;
+            color: White;
+            font-size: 14px;
+            position: absolute;
+            pointer-events: all;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container.svelte-1vokldc .body {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container.svelte-1vokldc .body .content {
+            display: flex;
+            width: 100%;
+            padding-left: 24px;
+            padding-top: 24px;
+            padding-bottom: 24px;
+            padding-right: 40px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .container.svelte-1vokldc .body .content .headline {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .container.svelte-1vokldc .body .content .text {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 23px;
+            color: white;
+        }
+        .container.svelte-1vokldc .body .close-icon {
+            position: absolute;
+            inset-inline-end: 24px;
+            margin-top: 24px;
+            background: transparent;
+            background-image: url("../images/buttons/close-white.svg");
+            width: 12px;
+            height: 12px;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 0 none;
+            cursor: pointer;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-top: 1px solid #dae1e8;
+            width: 100%;
+        }
+        .btn-primary {
+            text-align: center;
+            cursor: pointer;
+            border: 0 none;
+            border-radius: 4px;
+            background: #0177a9;
+            color: White;
+            font-weight: 400;
+            padding: 8px 16px;
+            line-height: 1em;
+            transition: background-color 0.1s ease-in-out;
+        }
+        .btn-primary:hover {
+            background: #006494;
+        }
+        .section {
+            margin-bottom: 16px;
+        }
+        .section h2 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .section p {
+            font-size: 12px;
+            line-height: 1.5em;
+        }
+    </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header class="header">
-        <div class="container">
-            <h1>SMART Учебник: Финансовая Грамотность</h1>
+    <div class="container svelte-1vokldc">
+        <div class="body">
+            <div class="content">
+                <div class="headline">Финансовая Грамотность</div>
+                <div class="text">
+                    Добро пожаловать в наш смарт учебник по финансовой грамотности! Здесь вы найдете важную информацию о управлении личными финансами, инвестициях и экономии.
+                </div>
+                <div class="section">
+                    <h2>Управление бюджетом</h2>
+                    <p>Научитесь составлять бюджет и контролировать свои расходы.</p>
+                </div>
+                <div class="section">
+                    <h2>Инвестиции</h2>
+                    <p>Узнайте, как начать инвестировать и увеличивать свой капитал.</p>
+                </div>
+                <div class="section">
+                    <h2>Экономия</h2>
+                    <p>Практические советы по экономии без потери качества жизни.</p>
+                </div>
+            </div>
+            <button class="close-icon"></button>
         </div>
-    </header>
-
-    <!-- Основной контент -->
-    <main class="content">
-        <section class="section">
-            <h2>1.5. Деньги и цены. Как инфляция обесценивает деньги</h2>
-
-            <!-- Вкладка 1 -->
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    Что понимают под инфляцией?
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Инфляция – это устойчивый рост цен внутри страны на большинство товаров (товарных групп), услуг или работ, который приводит к обесцениванию денег (национальной валюты).
-                    </p>
-                    <p>
-                        Например, если стоимость 10 поездок на метро в начале года составляла 500 рублей, а через год увеличилась до 570 рублей, то теперь на 500 рублей можно купить только 8 поездок вместо 10.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Вкладка 2 -->
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    Индекс потребительских цен и инфляция: в чем разница?
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Индекс потребительских цен (ИПЦ) показывает, во сколько раз выросли цены на потребительскую корзину за определенный период времени. Он отражает среднее изменение стоимости денег, которые уплачивает потребитель за определенный набор товаров и услуг.
-                    </p>
-                    <blockquote>
-                        <strong>Формула:</strong><br>
-                        Уровень инфляции = Индекс инфляции – 1<br>
-                        или<br>
-                        Уровень инфляции = Индекс потребительских цен — 100%.
-                    </blockquote>
-                    <p>
-                        Например, если индекс потребительских цен за год составил 1,1956, то уровень инфляции равен 16,36%.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Вкладка 3 -->
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    Как оценить свои доходы в реальном выражении?
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Для оценки реальных доходов необходимо учитывать влияние инфляции. Если номинальные доходы растут медленнее, чем инфляция, то покупательная способность снижается.
-                    </p>
-                    <p>
-                        Например, если ваш доход увеличился на 5%, а инфляция составила 7%, то ваши реальные доходы уменьшились на 2%.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Вкладка 4 -->
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    Причины инфляции
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Инфляция возникает по разным причинам:
-                    </p>
-                    <ul>
-                        <li>Устойчивое повышение заработной платы в отдельных секторах экономики.</li>
-                        <li>Индексация социальных выплат населению.</li>
-                        <li>Рост объемов государственных закупок и бюджетных расходов.</li>
-                        <li>Чрезмерное кредитование населения и компаний.</li>
-                        <li>Снижение курса национальной валюты.</li>
-                        <li>Повышение тарифов на услуги естественных монополий.</li>
-                    </ul>
-                    <p>
-                        Эти факторы создают избыточный денежный спрос или увеличивают издержки производителей, что приводит к росту цен.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Вкладка 5 -->
-            <div class="accordion-item">
-                <button class="accordion-header" onclick="toggleAccordion(this)">
-                    Пример расчета инфляции
-                </button>
-                <div class="accordion-content">
-                    <p>
-                        Рост цен на бензин составлял:
-                    </p>
-                    <ul>
-                        <li>В первом квартале: 0,5% ежемесячно.</li>
-                        <li>Во втором квартале: 0,7% ежемесячно.</li>
-                        <li>В третьем квартале: 1%, 1,1%, 1,2% соответственно.</li>
-                        <li>В четвертом квартале: 1,2% ежемесячно.</li>
-                    </ul>
-                    <p>
-                        Тогда индекс роста цен на бензин за год составит:
-                    </p>
-                    <blockquote>
-                        Индекс цен = (1 + 0,005)<sup>3</sup> * (1 + 0,007)<sup>3</sup> * (1 + 0,01) * (1 + 0,011) * (1 + 0,012) * (1 + 0,012)<sup>3</sup> = 1,110.
-                    </blockquote>
-                    <p>
-                        Следовательно, уровень инфляции составил 10%.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Подвал -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 SMART Учебник. Все права защищены.</p>
+        <div class="footer">
+            <button class="btn-primary">Начать обучение</button>
         </div>
-    </footer>
-
-    <script>
-        // Функция для переключения аккордеона
-        function toggleAccordion(button) {
-            const content = button.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null; // Скрыть содержимое
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px"; // Показать содержимое
-            }
-        }
-    </script>
+    </div>
 </body>
 </html>

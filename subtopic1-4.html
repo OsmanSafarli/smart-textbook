@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4. Иностранная валюта как деньги: зачем она нужна</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --text-dark: #2b2d42;
+            --text-light: #edf2f4;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: #f8f9ff;
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--gradient);
+            border-radius: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        h2, h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        h2::after, h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        /* Accordion */
+        .accordion-item {
+            background: white;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .accordion-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s ease;
+        }
+        .accordion-header::before {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.open .accordion-header::before {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+            padding: 1.5rem;
+        }
+        /* Lists */
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9ff;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .features li:hover {
+            transform: translateX(5px);
+        }
+        .features li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        /* Interactive Tasks */
+        .interactive-tasks {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .task-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+        }
+        .task-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .task-card label {
+            display: block;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+        .task-card input[type="radio"],
+        .task-card input[type="checkbox"] {
+            margin-right: 0.8rem;
+        }
+        .task-card button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 1rem;
+        }
+        .task-card button:hover {
+            transform: translateY(-2px);
+        }
+        .task-card input[type="number"] {
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            .header {
+                padding: 2rem 1rem;
+            }
+            .task-card {
+                padding: 1rem;
+            }
+            .task-card h4 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>1.4. Иностранная валюта как деньги: зачем она нужна</h1>
+            <p>Узнайте о роли иностранной валюты, курсах обмена и ограничениях использования.</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Раздел: Для чего нужна иностранная валюта? -->
+            <section class="section">
+                <h2>Для чего нужна иностранная валюта?</h2>
+                <p style="text-align: justify;">
+                    Иностранная валюта необходима для расчетов за границей, где национальная валюта не принимается. Например, при путешествии в другую страну вам нужно иметь местную валюту.
+                </p>
+            </section>
+
+            <!-- Аккордеон: Валютный курс -->
+            <section class="accordion-section">
+                <div class="accordion-item">
+                    <div class="accordion-header">Валютный курс</div>
+                    <div class="accordion-content">
+                        <p style="text-align: justify;">
+                            Валютный курс — это цена одной валюты, выраженная через другую. Например, 1 китайский юань = 13.61 рублей.
+                        </p>
+                        <ul class="features">
+                            <li><i class="fas fa-arrow-up"></i> <strong>Курс покупки:</strong> цена, по которой банк готов купить валюту у клиента.</li>
+                            <li><i class="fas fa-arrow-down"></i> <strong>Курс продажи:</strong> цена, по которой банк готов продать валюту клиенту.</li>
+                            <li><i class="fas fa-exchange-alt"></i> <strong>Спред:</strong> разница между курсом покупки и продажи.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел: Ограничения использования валюты -->
+            <section class="section">
+                <h3>Ограничения использования валюты</h3>
+                <p style="text-align: justify;">
+                    С марта 2022 года действуют ограничения на операции с наличной иностранной валютой в России:
+                </p>
+                <ul class="features">
+                    <li><i class="fas fa-lock"></i> Максимальный лимит вывоза наличной валюты за границу: до 10 тыс. долларов США на человека.</li>
+                    <li><i class="fas fa-lock"></i> Получение средств с валютных счетов после 9 марта 2022 года возможно только в рублях.</li>
+                </ul>
+            </section>
+
+            <!-- Интерактивные практические задания -->
+            <section class="interactive-tasks">
+                <h3 class="chapter-title">Интерактивные практические задания</h3>
+
+                <!-- Задание 1: Расчет покупки валюты -->
+                <div class="task-card">
+                    <h4>Задание 1: Сколько рублей нужно потратить на покупку 5000 китайских юаней?</h4>
+                    <p>
+                        Предположим, официальный курс Банка России: 1 китайский юань = 13.61 рублей. Курс продажи банка выше на 5%. Какую сумму рублей вам нужно потратить?
+                    </p>
+                    <form id="currency-exchange-form">
+                        <input type="number" id="currency-exchange-answer" placeholder="Введите сумму">
+                        <button type="button" onclick="checkTask1()">Проверить ответ</button>
+                        <p id="currency-exchange-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 2: Тест -->
+                <div class="task-card">
+                    <h4>Задание 2: Что такое спред?</h4>
+                    <form id="spread-form">
+                        <label>
+                            <input type="radio" name="spread" value="a"> a) Разница между курсом покупки и продажи валюты.
+                        </label><br>
+                        <label>
+                            <input type="radio" name="spread" value="b"> b) Официальный курс Центрального банка.
+                        </label><br>
+                        <button type="button" onclick="checkTask2()">Проверить ответ</button>
+                        <p id="spread-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 3: Выбор варианта -->
+                <div class="task-card">
+                    <h4>Задание 3: Какой курс используется при покупке валюты?</h4>
+                    <form id="exchange-rate-form">
+                        <label>
+                            <input type="radio" name="exchange-rate" value="a"> a) Курс покупки.
+                        </label><br>
+                        <label>
+                            <input type="radio" name="exchange-rate" value="b"> b) Курс продажи.
+                        </label><br>
+                        <button type="button" onclick="checkTask3()">Проверить ответ</button>
+                        <p id="exchange-rate-result"></p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Раздел: Интересный факт -->
+            <section class="section tips-section">
+                <h3>Знаете ли вы?</h3>
+                <ul class="tips">
+                    <li><i class="fas fa-info-circle"></i> Официальный курс устанавливается Банком России.</li>
+                    <li><i class="fas fa-info-circle"></i> Коммерческие банки могут предлагать свои курсы, которые отличаются от официальных.</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+                        // Аккордеон
+                        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.accordion-item');
+                item.classList.toggle('open');
+            });
+        });
+        // Проверка задания 1: Расчет покупки валюты
+        function checkTask1() {
+            const answer = parseFloat(document.getElementById('currency-exchange-answer').value);
+            const officialRate = 13.61; // Официальный курс юаня
+            const markupRate = 0.05; // Надбавка банка (5%)
+            const amountCNY = 5000; // Количество юаней
+            const correctAnswer = amountCNY * (officialRate * (1 + markupRate)); // 5000 * (13.61 * 1.05)
+
+            const resultElement = document.getElementById('currency-exchange-result');
+            if (!isNaN(answer) && Math.abs(answer - correctAnswer) < 0.01) {
+                resultElement.textContent = '✅ Верный расчет!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = `❌ Неправильно. Правильный ответ: ${correctAnswer.toFixed(2)} рублей.`;
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 2: Что такое спред?
+        function checkTask2() {
+            const selectedValue = document.querySelector('input[name="spread"]:checked')?.value;
+            const correctAnswer = 'a'; // Разница между курсом покупки и продажи валюты
+            const resultElement = document.getElementById('spread-result');
+
+            if (selectedValue === correctAnswer) {
+                resultElement.textContent = '✅ Правильно!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = '❌ Неверно! Правильный ответ: a) Разница между курсом покупки и продажи валюты.';
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 3: Какой курс используется при покупке валюты?
+        function checkTask3() {
+            const selectedValue = document.querySelector('input[name="exchange-rate"]:checked')?.value;
+            const correctAnswer = 'b'; // Курс продажи
+            const resultElement = document.getElementById('exchange-rate-result');
+
+            if (selectedValue === correctAnswer) {
+                resultElement.textContent = '✅ Правильно!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = '❌ Неверно! Правильный ответ: b) Курс продажи.';
+                resultElement.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

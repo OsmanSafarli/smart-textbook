@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1. Зачем нужны деньги и как их использовать</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --text-dark: #2b2d42;
+            --text-light: #edf2f4;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: #f8f9ff;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--gradient);
+            border-radius: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2, h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after, h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        /* Accordion */
+        .accordion-item {
+            background: white;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header::before {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-header::before {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+            padding: 1.5rem;
+        }
+
+        /* Lists */
+        .features, .tips {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li, .tips li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9ff;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features li:hover, .tips li:hover {
+            transform: translateX(5px);
+        }
+
+        .features li i, .tips li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* Cards */
+        .task-cards {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+        }
+
+        .card i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .task-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>1.1. Зачем нужны деньги и как их использовать</h1>
+            <p>Узнайте о роли денег в современном мире и их основных характеристиках.</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section class="section">
+                <h2>Деньги: что это и зачем они нужны?</h2>
+                <p>
+                    Деньги — это обязательный и законный инструмент обмена, платежа и универсальный эквивалент стоимости,
+                    установленный государством. Они имеют официальное название (например, рубль в России) и номинал.
+                </p>
+            </section>
+
+            <!-- Аккордеон: Основные характеристики денег -->
+            <section class="section">
+                <div class="accordion-item">
+                    <div class="accordion-header">Основные характеристики денег</div>
+                    <div class="accordion-content">
+                        <ul class="features">
+                            <li><i class="fas fa-check"></i> <strong>Законность:</strong> гарантированное использование на территории конкретной страны.</li>
+                            <li><i class="fas fa-check"></i> <strong>Фиатная валюта:</strong> деньги ценны потому, что государство признаёт их платёжным средством.</li>
+                            <li><i class="fas fa-check"></i> <strong>Универсальность:</strong> могут быть обменены на любые блага (товары, услуги).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Аккордеон: Функции денег -->
+            <section class="section">
+                <div class="accordion-item">
+                    <div class="accordion-header">Функции денег</div>
+                    <div class="accordion-content">
+                        <ul class="features">
+                            <li><i class="fas fa-chart-line"></i> <strong>Измерение стоимости:</strong> деньги помогают оценивать стоимость товаров, услуг и других активов. Например, доходы семьи или стоимость квартиры измеряются в деньгах.</li>
+                            <li><i class="fas fa-hand-holding-usd"></i> <strong>Обмен и платежи:</strong> деньги используются для покупок, оплаты услуг, налогов, кредитов и других обязательств.</li>
+                            <li><i class="fas fa-piggy-bank"></i> <strong>Сбережение и накопление:</strong>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li><em>Сбережение:</em> откладывание денег на будущее без увеличения их стоимости.</li>
+                                    <li><em>Накопление:</em> вложение денег для получения дохода (банковские вклады, инвестиции).</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел: Можно ли обойтись без денег? -->
+            <section class="section">
+                <h3>Можно ли обойтись без денег?</h3>
+                <p>
+                    В современном мире деньги необходимы. Даже с появлением электронных и цифровых форматов (электронные кошельки, криптовалюты)
+                    деньги остаются основным инструментом экономики.
+                </p>
+            </section>
+
+            <!-- Карточки: Практические задания -->
+            <section class="section">
+                <h3>Практические задания</h3>
+                <div class="task-cards">
+                    <div class="card">
+                        <i class="fas fa-calculator"></i>
+                        <p>Оцените свои доходы за месяц в денежном выражении.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-receipt"></i>
+                        <p>Назовите крупные платежи за неделю, разделив их на покупки и обязательства.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-calendar"></i>
+                        <p>Составьте план накопления свободных средств на 3 месяца, учитывая текущую экономическую ситуацию.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел: Важно помнить -->
+            <section class="section tips-section">
+                <h3>Важно помнить:</h3>
+                <ul class="tips">
+                    <li><i class="fas fa-lightbulb"></i> Сбережения защищают от неожиданных расходов, но не приносят доход.</li>
+                    <li><i class="fas fa-chart-line"></i> Инвестиции могут увеличить капитал, но связаны с рисками.</li>
+                    <li><i class="fas fa-book"></i> Финансовая грамотность помогает эффективно использовать деньги и избегать потерь.</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Аккордеон
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.accordion-item');
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>

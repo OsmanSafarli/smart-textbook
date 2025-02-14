@@ -1,257 +1,175 @@
-/* Глобальные стили */
-:root {
-    --primary: #340aeed8;
-    --accent: #FF6B00;
-    --background: #ffffff;
-    --text: #333333;
-    --card-background: #f8f9fa;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Общие стили */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: var(--background);
-    color: var(--text);
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 20px;
 }
 
-/* Главный баннер */
 .hero {
-    position: relative;
-    overflow: hidden;
-    height: 60vh; /* Адаптивная высота */
-    background: linear-gradient(rgba(19, 3, 240, 0.75), rgba(36, 4, 218, 0.7)), url('finance-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
+    background-color: #f9f9f9;
+    padding: 50px 0;
     text-align: center;
-    margin-bottom: 3rem;
-}
-
-.hero-content {
     position: relative;
-    z-index: 1;
-    padding: 4rem 0;
-    max-width: 800px;
-    margin: 0 auto;
 }
 
 .hero h2 {
-    font-size: clamp(2rem, 6vw, 3.5rem); /* Адаптивный размер текста */
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .hero p {
-    font-size: clamp(1.2rem, 4vw, 1.8rem); /* Адаптивный размер текста */
-    margin-bottom: 2rem;
+    font-size: 18px;
+    color: #666;
 }
 
-/* Анимированные изображения */
+.footer {
+    background-color: #f4f4f4;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Анимация PNG-изображений */
 .animated-image {
     position: absolute;
-    width: 15%; /* Размер в процентах для адаптивности */
-    height: auto;
     animation: float 5s infinite ease-in-out;
 }
-
-.image-1 { bottom: 20%; left: 15%; }
-.image-2 { bottom: 20%; right: 15%; }
-.image-3 { top: 40%; left: 40%; width: 8% }
-.image-4 { bottom: 40%; right: 60%; }
-.image-5 { top: 62%; left: 5%; }
-.image-6 { bottom: 65%; left: 60%; transform: translateX(-50%); }
-.image-16 { top: 10%; left: 80%;  width: 5% }
 
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 }
 
-/* Основной контент */
-.main-content {
-    position: relative;
-    background: linear-gradient(rgba(19, 3, 240, 0.1), rgba(36, 4, 218, 0.1));
-    padding: 4rem 0;
-    margin-bottom: 3rem;
+.image-1 { top: 20%; left: 10%; }
+.image-2 { top: 30%; right: 20%; }
+.image-3 { bottom: 10%; left: 30%; }
+.image-4 { top: 40%; right: 5%; }
+.image-5 { bottom: 20%; left: 50%; }
+.image-6 { top: 10%; right: 30%; }
+.image-16 { bottom: 5%; right: 10%; }
+
+/* Аккордеон */
+.accordion-item {
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     overflow: hidden;
 }
 
-.section {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.section-title {
-    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Адаптивный размер заголовка */
-    color: var(--primary);
-    margin-bottom: 2rem;
-}
-
-/* Декоративные SVG */
-.decoration-icon {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    opacity: 0.7;
-    z-index: -1;
-    animation: float 5s infinite ease-in-out;
-}
-
-.icon-money { bottom: 20%; left: 10%; }
-.icon-bank { bottom: 30%; right: 15%; }
-
-/* Аккордеоны */
-.accordion-item {
-    background: var(--card-background);
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s ease;
-    border: 1px solid #e0e0e0;
-}
-
 .accordion-header {
+    background-color: #f7f7f7;
+    padding: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem;
-    font-size: clamp(1rem, 2vw, 1.2rem); /* Адаптивный размер текста */
-    font-weight: 500;
-    color: var(--primary);
     cursor: pointer;
-    border: none;
-    background: none;
-    text-align: left;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.accordion-header.active {
+    background-color: #e0f7fa;
 }
 
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    padding: 0 1.5rem;
+    transition: max-height 0.3s ease;
+    background-color: #fff;
+    padding: 0 15px;
 }
 
 .accordion-content ul {
     list-style: none;
-    padding: 0;
+    padding: 15px 0;
 }
 
-.accordion-content li {
-    margin: 0.5rem 0;
-    padding: 0.8rem;
-    border-left: 3px solid var(--accent);
-    transition: background 0.2s ease;
-}
-
-.accordion-content li:hover {
-    background: rgba(0, 77, 152, 0.05);
-}
-
-.accordion-content a {
+.accordion-content li a {
+    color: #333;
     text-decoration: none;
-    color: var(--text);
     display: block;
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Адаптивный размер текста */
+    padding: 5px 0;
+    transition: color 0.3s ease;
 }
 
-/* Обновленные медиа-запросы */
+.accordion-content li a:hover {
+    color: #007bff;
+}
+
+/* Темная тема */
+body[data-theme="dark"] {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .hero {
+    background-color: #1c1c1c;
+}
+
+body[data-theme="dark"] .footer {
+    background-color: #121212;
+}
+
+body[data-theme="dark"] .accordion-header {
+    background-color: #2b2b2b;
+}
+
+body[data-theme="dark"] .accordion-header.active {
+    background-color: #3a3a3a;
+}
+
+body[data-theme="dark"] .accordion-content {
+    background-color: #2b2b2b;
+}
+
+body[data-theme="dark"] .accordion-content li a {
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .accordion-content li a:hover {
+    color: #00bfff;
+}
+
+/* Адаптивность */
 @media (max-width: 768px) {
-    .hero {
-        height: 50vh; /* Фиксированная высота */
-    }
-
     .hero h2 {
-        font-size: 2rem; /* Фиксированный размер */
-        line-height: 1.3;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    .animated-image {
-        width: 20%; /* Сохраняем пропорции */
-        animation: float-mobile 4s infinite ease-in-out;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
+        font-size: 24px;
     }
 
     .accordion-header {
-        padding: 1.2rem;
-        font-size: 1.1rem;
+        font-size: 16px;
     }
 
-    .accordion-content a {
-        font-size: 1rem;
+    .accordion-content li a {
+        font-size: 14px;
     }
 }
-
-@media (max-width: 480px) {
-    .hero {
-        height: 40vh;
-        background-position: 60% center;
-    }
-
-    .hero h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .animated-image {
-        width: 25%;
-        animation: float-mobile 3s infinite ease-in-out;
-    }
-
-    .section-title {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .accordion-header {
-        padding: 1rem;
-        font-size: 1rem;
-    }
-
-    .accordion-content li {
-        padding: 0.6rem;
-    }
-
-    .accordion-content a {
-        font-size: 0.9rem;
-    }
-}
-
-@keyframes float-mobile {
-    0%, 100% {
-        transform: translateY(0) scale(0.9);
-    }
-    50% {
-        transform: translateY(-10px) scale(0.9);
-    }
-}
+document.querySelectorAll('.open-subtopic').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const href = button.getAttribute('data-href');
+        if (href) {
+            window.open(href, '_blank');
+        } else {
+            console.error('Ошибка: атрибут data-href отсутствует или пустой.');
+        }
+    });
+});
