@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1. Откуда берутся доходы и какие они бывают</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+         /* Добавлены недостающие стили */
+         .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .features li, .tips li {
+            list-style: none;
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .features i, .tips i {
+            position: absolute;
+            left: 0;
+            top: 0.4em;
+            color: var(--primary);
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        /* Исправлен медиа-запрос для hero-image */
+        @media (max-width: 768px) {
+            .hero-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                max-width: 300px;
+                margin: 1rem auto;
+                display: block;
+            }
+        }
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.8);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Modern Header */
+        .hero-section {
+            position: relative;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-10deg);
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.2));
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2, h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Modern Accordion */
+        .accordion-item {
+            background: var(--glass);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        .accordion-header::before {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.open .accordion-header::before {
+            transform: rotate(180deg);
+        }
+
+        /* Interactive Cards */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .task-card {
+            background: var(--glass);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .task-card:hover::before {
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        /* Animated Images */
+        .animated-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+            transform: perspective(1000px) rotateY(20deg) rotateX(5deg);
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
+        }
+
+        .animated-image:hover {
+            transform: perspective(1000px) rotateY(25deg) rotateX(10deg) translateZ(20px);
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+                text-align: center;
+            }
+
+            .hero-image {
+                position: static;
+                transform: none;
+                width: 80%;
+                max-width: 300px;
+                margin: 1rem auto;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .interactive-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem !important;
+            }
+
+            .task-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Modern Hero Section -->
+        <header class="hero-section">
+            <img src="income.png" alt="Доходы" class="hero-image" data-aos="fade-left">
+            <div class="hero-content">
+                <h1>2.1. Откуда берутся доходы и какие они бывают</h1>
+                <p>Узнайте о различных источниках доходов и их влиянии на ваше финансовое благополучие.</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Раздел: Что такое доход? -->
+            <section class="section-card">
+                <h2>Что такое доход?</h2>
+                <p style="text-align: justify;">
+                    Доход — это безвозвратные денежные поступления в собственность лица, получаемые от деятельности или дарения. Например, заработная плата, пенсии, инвестиционные доходы и подарки.
+                </p>
+            </section>
+
+            <!-- Аккордеон: Минимальный размер оплаты труда (МРОТ) -->
+            <section class="section-card">
+                <div class="accordion-item">
+                    <div class="accordion-header">Минимальный размер оплаты труда (МРОТ)</div>
+                    <div class="accordion-content">
+                        <p style="text-align: justify;">
+                            МРОТ регулируется федеральным законом и устанавливается на уровне прожиточного минимума трудоспособного населения. С 1 января 2025 года он составляет 18 169 рублей в ДНР и ЛНР, 18 749 рублей в Херсонской области, 17 201 рубль в Запорожской области.
+                        </p>
+                        <ul class="features">
+                            <li><i class="fas fa-file-contract"></i> <strong>Фиксация МРОТ:</strong> указывается в трудовом соглашении.</li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Индексация:</strong> ежегодно с учетом инфляции.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел: Прожиточный минимум -->
+            <section class="section-card">
+                <h3>Прожиточный минимум</h3>
+                <p style="text-align: justify;">
+                    Прожиточный минимум устанавливается каждым регионом для разных социально-демографических групп. Например:
+                </p>
+                <ul class="features">
+                    <li><i class="fas fa-home"></i> В ДНР и ЛНР: трудоспособное население — 18 169 рублей, общая сумма — 16 669 рублей.</li>
+                    <li><i class="fas fa-city"></i> В Херсонской области: 18 749 рублей.</li>
+                    <li><i class="fas fa-industry"></i> В Запорожской области: 17 201 рубль.</li>
+                </ul>
+            </section>
+
+            <!-- Раздел: Типы доходов -->
+            <section class="section-card">
+                <h3>Типы доходов</h3>
+                <p style="text-align: justify;">
+                    Все доходы можно разделить на активные и пассивные. Активные доходы зависят от вашего труда, а пассивные — от ваших накоплений и инвестиций.
+                </p>
+                <ul class="features">
+                    <li><i class="fas fa-briefcase"></i> <strong>Активные доходы:</strong> зарплата, предпринимательская деятельность, продажа продукции.</li>
+                    <li><i class="fas fa-piggy-bank"></i> <strong>Пассивные доходы:</strong> проценты по вкладам, арендная плата, социальные выплаты.</li>
+                </ul>
+            </section>
+
+            <!-- Интерактивные практические задания -->
+            <section class="interactive-grid">
+                <h3 class="chapter-title">Интерактивные практические задания</h3>
+
+                <!-- Задание 1: Тест -->
+                <div class="task-card">
+                    <h4>Задание 1: Какой вид дохода зависит от вашего труда?</h4>
+                    <form id="income-types-form">
+                        <label>
+                            <input type="radio" name="income-type" value="active"> a) Активный доход.
+                        </label><br>
+                        <label>
+                            <input type="radio" name="income-type" value="passive"> b) Пассивный доход.
+                        </label><br>
+                        <button type="button" onclick="checkTask1()">Проверить ответ</button>
+                        <p id="income-types-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 2: Расчет -->
+                <div class="task-card">
+                    <h4>Задание 2: Рассчитайте реально располагаемый доход</h4>
+                    <p>
+                        Предположим, ваша зарплата за месяц составила 85 000 рублей. Вы уплатили штрафы (2 500 рублей), налоги (5 000 рублей) и кредитные платежи (10 500 рублей). Индекс потребительских цен (ИПЦ) равен 1,012. Найдите ваш реально располагаемый доход.
+                    </p>
+                    <form id="real-income-form">
+                        <input type="number" id="real-income-answer" placeholder="Введите ваш ответ">
+                        <button type="button" onclick="checkTask2()">Проверить ответ</button>
+                        <p id="real-income-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 3: Выбор варианта -->
+                <div class="task-card">
+                    <h4>Задание 3: Чем отличается МРОТ от прожиточного минимума?</h4>
+                    <form id="mrot-minimum-form">
+                        <label>
+                            <input type="radio" name="mrot-minimum" value="a"> a) МРОТ не может быть меньше прожиточного минимума.
+                        </label><br>
+                        <label>
+                            <input type="radio" name="mrot-minimum" value="b"> b) МРОТ всегда выше прожиточного минимума.
+                        </label><br>
+                        <button type="button" onclick="checkTask3()">Проверить ответ</button>
+                        <p id="mrot-minimum-result"></p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Раздел: Интересный факт -->
+            <section class="section-card tips-section">
+                <h3>Знаете ли вы?</h3>
+                <ul class="tips">
+                    <li><i class="fas fa-info-circle"></i> Размер МРОТ устанавливается на основе медианной заработной платы по стране.</li>
+                    <li><i class="fas fa-info-circle"></i> Реально располагаемый доход корректируется на индекс потребительских цен.</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer для анимаций
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.section-card, .animated-image').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Улучшенный аккордеон
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.accordion-item');
+                item.classList.toggle('open');
+                
+                const content = item.querySelector('.accordion-content');
+                content.style.maxHeight = content.style.maxHeight 
+                    ? null 
+                    : content.scrollHeight + 'px';
+            });
+        });
+          // Добавлены функции проверки заданий
+          function checkTask1() {
+            const form = document.getElementById('income-types-form');
+            const result = document.getElementById('income-types-result');
+            const selected = form.querySelector('input:checked');
+
+            if (selected && selected.value === 'active') {
+                result.textContent = '✅ Правильно! Активный доход зависит от вашей деятельности.';
+                result.style.color = 'green';
+            } else {
+                result.textContent = '❌ Попробуйте еще раз. Активный доход напрямую зависит от ваших действий.';
+                result.style.color = 'red';
+            }
+        }
+
+        function checkTask2() {
+            const answer = parseInt(document.getElementById('real-income-answer').value);
+            const result = document.getElementById('real-income-result');
+            
+            // Формула расчета: (85000 - 2500 - 5000 - 10500) / 1.012
+            const correct = Math.round((85000 - 2500 - 5000 - 10500) / 1.012);
+            
+            if (answer === correct) {
+                result.textContent = `✅ Верно! Правильный ответ: ${correct} рублей.`;
+                result.style.color = 'green';
+            } else {
+                result.textContent = `❌ Неверно. Попробуйте еще раз. Правильный ответ: ${correct} рублей.`;
+                result.style.color = 'red';
+            }
+        }
+
+        function checkTask3() {
+            const form = document.getElementById('mrot-minimum-form');
+            const result = document.getElementById('mrot-minimum-result');
+            const selected = form.querySelector('input:checked');
+
+            if (selected && selected.value === 'a') {
+                result.textContent = '✅ Правильно! МРОТ не может быть ниже прожиточного минимума.';
+                result.style.color = 'green';
+            } else {
+                result.textContent = '❌ Неверно. МРОТ устанавливается на уровне прожиточного минимума.';
+                result.style.color = 'red';
+            }
+        }
+
+        // Улучшенный аккордеон с закрытием других элементов
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.accordion-item');
+                const isOpen = item.classList.contains('open');
+                
+                // Закрываем все аккордеоны
+                document.querySelectorAll('.accordion-item').forEach(el => {
+                    el.classList.remove('open');
+                    el.querySelector('.accordion-content').style.maxHeight = null;
+                });
+
+                // Открываем текущий если был закрыт
+                if (!isOpen) {
+                    item.classList.add('open');
+                    const content = item.querySelector('.accordion-content');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+
+    <!-- Подключение библиотеки AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+    </script>
+</body>
+</html>

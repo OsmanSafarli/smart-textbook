@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.5. Деньги и цены. Как инфляция обесценивает деньги</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --text-dark: #2b2d42;
+            --text-light: #edf2f4;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: #f8f9ff;
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: var(--gradient);
+            border-radius: 1.5rem;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* Sections */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        h2, h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        h2::after, h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        /* Accordion */
+        .accordion-item {
+            background: white;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .accordion-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s ease;
+        }
+        .accordion-header::before {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.open .accordion-header::before {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item.open .accordion-content {
+            max-height: 1000px;
+            padding: 1.5rem;
+        }
+        /* Lists */
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9ff;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .features li:hover {
+            transform: translateX(5px);
+        }
+        .features li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        /* Interactive Tasks */
+        .interactive-tasks {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .task-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.15);
+        }
+        .task-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .task-card label {
+            display: block;
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+        .task-card input[type="radio"],
+        .task-card input[type="checkbox"] {
+            margin-right: 0.8rem;
+        }
+        .task-card button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            margin-top: 1rem;
+        }
+        .task-card button:hover {
+            transform: translateY(-2px);
+        }
+        .task-card input[type="number"] {
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            .header {
+                padding: 2rem 1rem;
+            }
+            .task-card {
+                padding: 1rem;
+            }
+            .task-card h4 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>1.5. Деньги и цены. Как инфляция обесценивает деньги</h1>
+            <p>Узнайте о причинах инфляции, её измерении и влиянии на покупательную способность.</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Раздел: Что понимают под инфляцией? -->
+            <section class="section">
+                <h2>Что понимают под инфляцией?</h2>
+                <p style="text-align: justify;">
+                    Инфляция — это устойчивый рост цен внутри страны на большинство товаров, услуг или работ, который приводит к обесцениванию денег (национальной валюты). Например, если цена на 10 поездок в метро выросла с 500 до 570 рублей за год, то на ту же сумму можно купить только 8 поездок вместо 10.
+                </p>
+            </section>
+
+            <!-- Аккордеон: Индекс потребительских цен -->
+            <section class="accordion-section">
+                <div class="accordion-item">
+                    <div class="accordion-header">Индекс потребительских цен</div>
+                    <div class="accordion-content">
+                        <p style="text-align: justify;">
+                            Индекс потребительских цен (ИПЦ) показывает, во сколько раз выросли цены на потребительскую корзину за определенный период времени. Он используется для расчета уровня инфляции.
+                        </p>
+                        <ul class="features">
+                            <li><i class="fas fa-chart-line"></i> <strong>Формула:</strong> Уровень инфляции = ИПЦ - 1.</li>
+                            <li><i class="fas fa-percent"></i> Если ИПЦ = 1,110, то уровень инфляции = 11%.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел: Причины инфляции -->
+            <section class="section">
+                <h3>Причины инфляции</h3>
+                <p style="text-align: justify;">
+                    Инфляция возникает по различным причинам, включая рост зарплат, увеличение кредитования, повышение налогов и тарифов естественных монополий. Эти факторы увеличивают издержки производителей, которые передаются конечному потребителю через рост цен.
+                </p>
+                <ul class="features">
+                    <li><i class="fas fa-arrow-up"></i> <strong>Рост зарплат:</strong> увеличивает затраты компаний.</li>
+                    <li><i class="fas fa-money-bill-wave"></i> <strong>Кредитование:</strong> приводит к избыточному денежному предложению.</li>
+                    <li><i class="fas fa-chart-pie"></i> <strong>Тарифы монополий:</strong> повышают стоимость услуг.</li>
+                </ul>
+            </section>
+
+            <!-- Интерактивные практические задания -->
+            <section class="interactive-tasks">
+                <h3 class="chapter-title">Интерактивные практические задания</h3>
+
+                <!-- Задание 1: Тест -->
+                <div class="task-card">
+                    <h4>Задание 1: Что такое инфляция?</h4>
+                    <form id="inflation-definition-form">
+                        <label>
+                            <input type="radio" name="inflation-definition" value="a"> a) Падение курса национальной валюты.
+                        </label><br>
+                        <label>
+                            <input type="radio" name="inflation-definition" value="b"> b) Устойчивый рост цен на товары и услуги.
+                        </label><br>
+                        <button type="button" onclick="checkTask1()">Проверить ответ</button>
+                        <p id="inflation-definition-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 2: Расчет -->
+                <div class="task-card">
+                    <h4>Задание 2: Рассчитайте уровень инфляции</h4>
+                    <p>
+                        Предположим, индекс потребительских цен (ИПЦ) за год составил 1,110. Какой уровень инфляции был за этот период?
+                    </p>
+                    <form id="inflation-calculation-form">
+                        <input type="number" id="inflation-calculation-answer" placeholder="Введите ваш ответ">
+                        <button type="button" onclick="checkTask2()">Проверить ответ</button>
+                        <p id="inflation-calculation-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 3: Выбор варианта -->
+                <div class="task-card">
+                    <h4>Задание 3: Какие факторы могут вызвать инфляцию?</h4>
+                    <form id="inflation-factors-form">
+                        <label>
+                            <input type="checkbox" name="inflation-factors" value="wages"> a) Рост заработной платы.
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="inflation-factors" value="taxes"> b) Повышение налогов.
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="inflation-factors" value="imports"> c) Снижение стоимости импорта.
+                        </label><br>
+                        <button type="button" onclick="checkTask3()">Проверить ответ</button>
+                        <p id="inflation-factors-result"></p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Раздел: Интересный факт -->
+            <section class="section tips-section">
+                <h3>Знаете ли вы?</h3>
+                <ul class="tips">
+                    <li><i class="fas fa-info-circle"></i> Инфляция может быть как положительной (рост цен), так и отрицательной (дефляция).</li>
+                    <li><i class="fas fa-info-circle"></i> Банк России регулирует инфляцию путем изменения ключевой ставки.</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+                                // Аккордеон
+                                document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.accordion-item');
+                item.classList.toggle('open');
+            });
+        });
+
+        // Проверка задания 1: Что такое инфляция?
+        function checkTask1() {
+            const selectedValue = document.querySelector('input[name="inflation-definition"]:checked')?.value;
+            const correctAnswer = 'b'; // Устойчивый рост цен на товары и услуги
+            const resultElement = document.getElementById('inflation-definition-result');
+
+            if (selectedValue === correctAnswer) {
+                resultElement.textContent = '✅ Правильно!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = '❌ Неверно! Правильный ответ: b) Устойчивый рост цен на товары и услуги.';
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 2: Рассчитайте уровень инфляции
+        function checkTask2() {
+            const answer = parseFloat(document.getElementById('inflation-calculation-answer').value);
+            const ipc = 1.110; // Индекс потребительских цен
+            const correctAnswer = (ipc - 1) * 100; // Уровень инфляции = (ИПЦ - 1) * 100%
+
+            const resultElement = document.getElementById('inflation-calculation-result');
+            if (!isNaN(answer) && Math.abs(answer - correctAnswer) < 0.01) {
+                resultElement.textContent = '✅ Верный расчет!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = `❌ Неправильно. Правильный ответ: ${correctAnswer.toFixed(2)}%.`;
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 3: Факторы, вызывающие инфляцию
+        function checkTask3() {
+            const checkboxes = document.querySelectorAll('input[name="inflation-factors"]:checked');
+            const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+            const correctAnswers = ['wages', 'taxes']; // Рост заработной платы и повышение налогов
+            const resultElement = document.getElementById('inflation-factors-result');
+
+            if (selectedValues.length !== correctAnswers.length || !correctAnswers.every(value => selectedValues.includes(value))) {
+                resultElement.textContent = '❌ Неверно! Правильные ответы: a) Рост заработной платы, b) Повышение налогов.';
+                resultElement.style.color = 'red';
+            } else {
+                resultElement.textContent = '✅ Верно!';
+                resultElement.style.color = 'green';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -235,11 +235,101 @@
                     padding: 1.25rem;
                 }
             }
-        </style>
+       
+       </style>
         <!-- Header -->
         <header class="header">
-            <h1>Смарт Учебник: Финансовая Грамотность</h1>
-            <p>Изучите основы управления финансами в цифровую эпоху</p>
+            <div class="header-content">
+                <div class="text-container">
+                    <h1>Смарт Учебник: Финансовая Грамотность</h1>
+                    <p>Изучите основы управления финансами в цифровую эпоху</p>
+                </div>
+                <div class="img-3d-container">
+                    <img src="money-icon2.png" 
+                         alt="Финансовая грамотность"
+                         class="floating-img">
+                </div>
+            </div>
+            <style>
+                .header {
+                position: relative;
+                overflow: hidden;
+                padding: 2rem 1rem;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 4rem 0;
+                background: var(--gradient-blue);
+                border-radius: 1rem;
+                color: white;
+                margin-bottom: 2rem;
+                box-shadow: 0 10px 20px rgba(67, 97, 238, 0.15);
+            }
+    
+            .header-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;s
+            }
+    
+            .text-container {
+                flex: 1 1 60%;
+                min-width: 300px;
+                padding-right: 2rem;
+            }
+    
+            .img-3d-container {
+                flex: 0 1 35%;
+                position: relative;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+            }
+    
+            .floating-img {
+                width: 100%;
+                max-width: 400px;
+                transform: rotateY(-15deg) rotateX(5deg) translateZ(20px);
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                filter: drop-shadow(15px 15px 20px rgba(0,0,0,0.15));
+            }
+    
+            /* 3D Эффект при наведении */
+            .img-3d-container:hover .floating-img {
+                transform: rotateY(-25deg) rotateX(10deg) translateZ(30px);
+                filter: drop-shadow(20px 25px 25px rgba(0,0,0,0.2));
+            }
+    
+            /* Адаптация для телефонов */
+            @media (max-width: 768px) {
+                .header-content {
+                    flex-direction: column;
+                    text-align: center;
+                }
+    
+                .text-container {
+                    padding-right: 0;
+                    margin-bottom: 2rem;
+                }
+    
+                .img-3d-container {
+                    flex: 0 1 auto;
+                    max-width: 300px;
+                }
+    
+                .floating-img {
+                    transform: rotateY(-10deg) rotateX(5deg) translateZ(15px);
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .floating-img {
+                    max-width: 250px;
+                    transform: rotateY(-5deg) translateZ(10px);
+                }
+            }</style>        
         </header>
 
         <!-- Sidebar (Оглавление) -->
