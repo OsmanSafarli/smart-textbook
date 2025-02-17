@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2. Личные расходы: тратим осознанно</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.8);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        .hero-image {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-10deg);
+            width: 300px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            transition: all 0.4s ease;
+        }
+        .hero-image:hover {
+            transform: translateY(-50%) rotate(-15deg) translateZ(20px);
+        }
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        h2, h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        /* Lists */
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9ff;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+        .features li:hover {
+            transform: translateX(5px);
+        }
+        .features li i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        /* Interactive Cards */
+        .interactive-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .task-card {
+            background: var(--glass);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+        }
+        .task-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        .task-card:hover::before {
+            animation: shine 1.5s;
+        }
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+        /* Buttons */
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background: var(--secondary);
+        }
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .hero-section {
+                padding: 2rem 1rem;
+                text-align: center;
+            }
+            .hero-image {
+                position: static;
+                transform: none;
+                width: 80%;
+                max-width: 300px;
+                margin: 1rem auto;
+            }
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem !important;
+            }
+            .task-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <img src="expenses.png" alt="Личные расходы" class="hero-image">
+            <div class="hero-content">
+                <h1>2.2. Личные расходы: тратим осознанно</h1>
+                <p>Узнайте о группах расходов, их контроле и планировании.</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Раздел: Что такое личные расходы? -->
+            <section class="section-card">
+                <h2>Что такое личные расходы?</h2>
+                <p style="text-align: justify;">
+                    Личные расходы — это все траты индивида (или его семьи), связанные с жизнеобеспечением и удовлетворением различных потребностей. Как только появляются доходы, возникают и расходы.
+                </p>
+            </section>
+
+            <!-- Раздел: Группы расходов -->
+            <section class="section-card">
+                <h3>Группы расходов</h3>
+                <ul class="features">
+                    <li><i class="fas fa-shopping-cart"></i> <strong>Потребительские расходы:</strong> продукты, услуги, медицина, транспорт.</li>
+                    <li><i class="fas fa-file-invoice-dollar"></i> <strong>Обязательные расходы:</strong> налоги, штрафы, страховка, кредитные платежи.</li>
+                    <li><i class="fas fa-theater-masks"></i> <strong>Расходы на культуру и досуг:</strong> путешествия, театры, рестораны.</li>
+                    <li><i class="fas fa-gift"></i> <strong>Подарки и благотворительность:</strong> подарки близким, друзьям, коллегам.</li>
+                    <li><i class="fas fa-chart-line"></i> <strong>Инвестиционные расходы:</strong> покупка недвижимости, автомобилей, произведений искусства.</li>
+                    <li><i class="fas fa-money-bill-wave"></i> <strong>Расходы на валюту и сбережения:</strong> покупка иностранной валюты, открытие депозитов.</li>
+                </ul>
+            </section>
+
+            <!-- Интерактивные практические задания -->
+            <section class="interactive-grid">
+                <h3 class="chapter-title">Интерактивные практические задания</h3>
+
+                <!-- Задание 1: Анализ расходов -->
+                <div class="task-card">
+                    <h4>Задание 1: Выпишите свои расходы за последние два месяца</h4>
+                    <form id="expense-analysis-form">
+                        <label for="necessary-expenses">Необходимые расходы (руб):</label>
+                        <input type="number" id="necessary-expenses" placeholder="Введите сумму" required><br><br>
+                        <label for="optional-expenses">Желательные расходы (руб):</label>
+                        <input type="number" id="optional-expenses" placeholder="Введите сумму" required><br><br>
+                        <button type="button" onclick="checkTask1()">Проанализировать</button>
+                        <p id="expense-analysis-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 2: Расчет процента желательных расходов -->
+                <div class="task-card">
+                    <h4>Задание 2: Найдите процент желательных расходов от общего объема</h4>
+                    <p>
+                        Предположим, ваши необходимые расходы составили 50 000 рублей, а желательные — 15 000 рублей. Какой процент желательных расходов от общего объема?
+                    </p>
+                    <form id="percentage-calculation-form">
+                        <input type="number" id="percentage-calculation-answer" placeholder="Введите ваш ответ">
+                        <button type="button" onclick="checkTask2()">Проверить ответ</button>
+                        <p id="percentage-calculation-result"></p>
+                    </form>
+                </div>
+
+                <!-- Задание 3: Типы контроля расходов -->
+                <div class="task-card">
+                    <h4>Задание 3: Какие способы контроля расходов вы знаете?</h4>
+                    <form id="expense-control-form">
+                        <label>
+                            <input type="checkbox" name="control-methods" value="manual"> a) Ручная запись в блокнот.
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="control-methods" value="excel"> b) Excel таблицы.
+                        </label><br>
+                        <label>
+                            <input type="checkbox" name="control-methods" value="apps"> c) Мобильные приложения.
+                        </label><br>
+                        <button type="button" onclick="checkTask3()">Проверить ответ</button>
+                        <p id="expense-control-result"></p>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Раздел: Интересный факт -->
+            <section class="section-card tips-section">
+                <h3>Знаете ли вы?</h3>
+                <ul class="tips">
+                    <li><i class="fas fa-info-circle"></i> Банковские карты помогают автоматически анализировать ваши расходы через мобильные приложения.</li>
+                    <li><i class="fas fa-info-circle"></i> Желательные расходы могут повышать качество жизни, но их важно контролировать.</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Intersection Observer для анимаций
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        document.querySelectorAll('.section-card, .hero-section').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Проверка задания 1: Анализ расходов
+        function checkTask1() {
+            const necessaryExpenses = parseFloat(document.getElementById('necessary-expenses').value);
+            const optionalExpenses = parseFloat(document.getElementById('optional-expenses').value);
+
+            if (!isNaN(necessaryExpenses) && !isNaN(optionalExpenses)) {
+                const totalExpenses = necessaryExpenses + optionalExpenses;
+                const percentageOptional = (optionalExpenses / totalExpenses) * 100;
+
+                const resultElement = document.getElementById('expense-analysis-result');
+                resultElement.textContent = `Процент желательных расходов: ${percentageOptional.toFixed(2)}%.`;
+                resultElement.style.color = 'green';
+            } else {
+                const resultElement = document.getElementById('expense-analysis-result');
+                resultElement.textContent = '❌ Пожалуйста, введите корректные значения.';
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 2: Расчет процента желательных расходов
+        function checkTask2() {
+            const answer = parseFloat(document.getElementById('percentage-calculation-answer').value);
+            const correctAnswer = (15000 / (50000 + 15000)) * 100; // 23.08%
+
+            const resultElement = document.getElementById('percentage-calculation-result');
+            if (!isNaN(answer) && Math.abs(answer - correctAnswer) < 0.01) {
+                resultElement.textContent = '✅ Верный расчет!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = `❌ Неправильно. Правильный ответ: ${correctAnswer.toFixed(2)}%.`;
+                resultElement.style.color = 'red';
+            }
+        }
+
+        // Проверка задания 3: Типы контроля расходов
+        function checkTask3() {
+            const selectedValues = Array.from(
+                document.querySelectorAll('input[name="control-methods"]:checked')
+            ).map(input => input.value);
+
+            const correctAnswers = ['manual', 'excel', 'apps'];
+            const isCorrect = correctAnswers.every(value => selectedValues.includes(value));
+
+            const resultElement = document.getElementById('expense-control-result');
+            if (isCorrect) {
+                resultElement.textContent = '✅ Правильно!';
+                resultElement.style.color = 'green';
+            } else {
+                resultElement.textContent = '❌ Неверно! Правильный ответ: все варианты (ручная запись, Excel, мобильные приложения).';
+                resultElement.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
