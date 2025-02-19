@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1. Кредит и заем – в чем разница. Когда кредит благо</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .features-item {
+            padding: 1.2rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        /* Results */
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d1fae5;
+            color: var(--success);
+        }
+
+        .error {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        /* Tips Section */
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tips-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-image {
+                width: 30%;
+                margin-top: 2rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calculator {
+            background: var(--glass);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h4 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input {
+            margin-bottom: 1rem;
+        }
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-section {
+            background: var(--gradient);
+            padding: 4rem 2rem;
+            border-radius: 2rem;
+            margin: 2rem 0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section-card {
+            background: var(--glass);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .accordion {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calculator {
+            background: var(--glass);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h4 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input {
+            margin-bottom: 1rem;
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d1fae5;
+            color: #10b981;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tips-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-image {
+                width: 80%;
+                margin-top: 2rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">4.1. Кредит и заем – в чем разница</h1>
+                <p class="hero-description">Узнайте, когда кредит становится благом, и как правильно его использовать.</p>
+            </div>
+            <img src="loan.png" alt="Кредит и заем" class="hero-image">
+        </header>
+
+        <main>
+            <section class="section-card">
+                <h2 class="section-title">Чем отличаются кредиты и займы?</h2>
+                <p>Кредит и заем — это разные финансовые инструменты. Кредит выдается только банками, всегда в денежной форме и с обязательной уплатой процентов. Заем может быть беспроцентным, предоставляться в виде вещей и оформляться устно.</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Особенности кредита</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Выдается только банками.</li>
+                                <li>Всегда в денежной форме.</li>
+                                <li>Обязательная уплата процентов.</li>
+                                <li>Оформляется письменным договором.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Особенности займа</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <ul>
+                                <li>Может быть беспроцентным.</li>
+                                <li>Предоставляется в виде денег или вещей.</li>
+                                <li>Может оформляться устно.</li>
+                                <li>Выдается не только банками.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h3 class="section-title">7 причин взять кредит</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>1. Приобретение жилья</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Кредит на жилье помогает улучшить качество жизни, особенно для молодых семей.</p>
+                            <img src="house.png" alt="Жилье" style="width: 100%; max-width: 300px; margin: 1rem auto; display: block;">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>2. Оплата обучения</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Образование — это вложение в будущее, которое окупается высокооплачиваемой работой.</p>
+                            <img src="education.png" alt="Образование" style="width: 100%; max-width: 300px; margin: 1rem auto; display: block;">
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>3. Оплата лечения</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Кредит на лечение может спасти жизнь или сохранить здоровье.</p>
+                            <img src="health.png" alt="Лечение" style="width: 100%; max-width: 300px; margin: 1rem auto; display: block;">
+                        </div>
+                    </div>
+                    <!-- Добавьте остальные 4 причины аналогично -->
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h3 class="section-title">Практические задания</h3>
+                <div class="interactive-grid">
+                    <div class="section-card">
+                        <h4>Тест: Кредит или заем?</h4>
+                        <form id="loan-test">
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="loan-type" value="credit"> Кредит
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="loan-type" value="loan"> Заем
+                                </label>
+                            </div>
+                            <button type="button" id="check-loan-btn">Проверить</button>
+                            <div id="loan-result" class="result"></div>
+                        </form>
+                    </div>
+
+                    <div class="section-card">
+                        <h4>Калькулятор кредита</h4>
+                        <form id="loan-calculator">
+                            <div class="form-group">
+                                <label for="loan-amount">Сумма кредита (руб):</label>
+                                <input type="number" id="loan-amount" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loan-rate">Процентная ставка (%):</label>
+                                <input type="number" id="loan-rate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loan-term">Срок (месяцы):</label>
+                                <input type="number" id="loan-term" required>
+                            </div>
+                            <button type="button" id="calculate-loan-btn">Рассчитать</button>
+                            <div id="calculator-result" class="result"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h3 class="section-title">Полезные советы</h3>
+                <ul class="tips-list">
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Всегда читайте условия кредитного договора перед подписанием.
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Планируйте бюджет так, чтобы выплаты по кредиту не превышали 30% дохода.
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="section-card" style="text-align: center; margin-top: 2rem;">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript для интерактивных заданий
+        document.getElementById('check-loan-btn').addEventListener('click', () => {
+            const selected = document.querySelector('input[name="loan-type"]:checked');
+            const result = document.getElementById('loan-result');
+            
+            if (selected && selected.value === 'credit') {
+                result.textContent = '✅ Правильно! Кредит выдается только банками.';
+                result.className = 'result success';
+            } else {
+                result.textContent = '❌ Неверно. Кредит выдается только банками.';
+                result.className = 'result error';
+            }
+        });
+
+        document.getElementById('calculate-loan-btn').addEventListener('click', () => {
+            const amount = parseFloat(document.getElementById('loan-amount').value);
+            const rate = parseFloat(document.getElementById('loan-rate').value);
+            const term = parseFloat(document.getElementById('loan-term').value);
+            const result = document.getElementById('calculator-result');
+
+            if (!isNaN(amount) && !isNaN(rate) && !isNaN(term)) {
+                const monthlyRate = rate / 100 / 12;
+                const payment = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -term));
+                result.textContent = `💰 Ежемесячный платеж: ${payment.toFixed(2)} руб.`;
+                result.className = 'result success';
+            } else {
+                result.textContent = '⚠️ Проверьте введенные значения';
+                result.className = 'result error';
+            }
+        });
+
+        // Аккордеон
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                header.classList.toggle('active');
+                content.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-up');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+    </script>
+</body>
+</html>
