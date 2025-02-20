@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.4. Программа долгосрочных сбережений</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили из шаблона */
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .features-item {
+            padding: 1.2rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        /* Results */
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d1fae5;
+            color: var(--success);
+        }
+
+        .error {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        /* Tips Section */
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tips-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-image {
+                width: 30%;
+                margin-top: 2rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calculator {
+            background: var(--glass);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h4 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">5.4. Программа долгосрочных сбережений</h1>
+                <p class="hero-description">
+                    Узнайте о преимуществах ПДС, способах участия и возможностях получения дохода.
+                </p>
+            </div>
+            <img src="long-term-savings.png" alt="Программа долгосрочных сбережений" class="hero-image animated-image">
+        </header>
+
+        <main>
+            <!-- Что такое ПДС? -->
+            <section class="section-card">
+                <h2 class="section-title">Что такое Программа долгосрочных сбережений?</h2>
+                <p>
+                    Программа долгосрочных сбережений (ПДС) действует на территории Российской Федерации с 2024 года. 
+                    Она представляет собой добровольный способ самостоятельного формирования гражданами своих пенсионных накоплений 
+                    с одновременным софинансированием части этих накоплений со стороны государства.
+                </p>
+                <p>
+                    Цель такой программы – создать дополнительный источник будущей пенсии для увеличения ее размера. 
+                    Для этого гражданину необходимо заключить договор с негосударственным пенсионным фондом (НПФ), который является оператором ПДС.
+                </p>
+            </section>
+
+            <!-- Источники накоплений -->
+            <section class="section-card">
+                <h3 class="section-title">Источники накоплений в ПДС</h3>
+                <ul class="features-list">
+                    <li class="features-item">
+                        <i class="fas fa-coins"></i>
+                        <div>
+                            <strong>Собственные взносы:</strong>
+                            <p>Разовый начальный и регулярные последующие взносы.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <strong>Пенсионные накопления:</strong>
+                            <p>Хранятся на лицевых счетах в НПФ и получены из взносов за 2002–2014 годы.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>
+                            <strong>Средства материнского капитала:</strong>
+                            <p>Могут быть использованы при наличии.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-percentage"></i>
+                        <div>
+                            <strong>Инвестиционный доход:</strong>
+                            <p>Доход от инвестирования средств в рамках ПДС.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-piggy-bank"></i>
+                        <div>
+                            <strong>Бюджетные средства:</strong>
+                            <p>Софинансирование из федерального бюджета до 36 тыс. рублей в год.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Схемы софинансирования -->
+            <section class="section-card">
+                <h3 class="section-title">Схемы софинансирования</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Схема 1: 1 : 1</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                Государство добавляет 1 рубль на каждый рубль личных взносов участника ПДС. 
+                                Схема распространяется на граждан с ежемесячным доходом до 80 тыс. рублей.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Схема 2: 0,5 : 1</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                Государство добавляет половину от персональных взносов участника ПДС. 
+                                Схема распространяется на граждан с доходом в диапазоне 80–150 тыс. рублей.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Схема 3: 0,25 : 1</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                Государство добавляет 25 копеек на каждый рубль собственных взносов. 
+                                Схема распространяется на граждан с доходом свыше 150 тыс. рублей.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Получение сбережений -->
+            <section class="section-card">
+                <h3 class="section-title">Как получить свои сбережения назад?</h3>
+                <p>
+                    Получение накопленных пенсионных сбережений возможно в следующих случаях:
+                </p>
+                <ul class="features-list">
+                    <li class="features-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <strong>Достижение возраста:</strong>
+                            <p>55 лет для женщин и 60 лет для мужчин.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-stopwatch"></i>
+                        <div>
+                            <strong>Истечение 15 лет:</strong>
+                            <p>С момента заключения договора ПДС с НПФ.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <div>
+                            <strong>Особая жизненная ситуация:</strong>
+                            <p>Потеря кормильца или опасное заболевание.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Практические задания -->
+            <section class="section-card">
+                <h3 class="section-title">Практические задания</h3>
+                <div class="interactive-grid">
+                    <!-- Тест: Какая схема софинансирования подходит? -->
+                    <div class="calculator">
+                        <h4>Тест: Какая схема софинансирования подходит вам?</h4>
+                        <form id="cofinancing-test">
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="income-level" value="low"> Доход до 80 тыс. рублей
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="income-level" value="medium"> Доход 80–150 тыс. рублей
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="income-level" value="high"> Доход свыше 150 тыс. рублей
+                                </label>
+                            </div>
+                            <button type="button" id="check-cofinancing-btn">Проверить</button>
+                            <div id="cofinancing-result" class="result"></div>
+                        </form>
+                    </div>
+
+                    <!-- Калькулятор софинансирования -->
+                    <div class="calculator">
+                        <h4>Калькулятор софинансирования</h4>
+                        <input type="number" id="personal-contribution" placeholder="Ваш взнос (руб)">
+                        <select id="income-level-select">
+                            <option value="1">Доход до 80 тыс. рублей</option>
+                            <option value="0.5">Доход 80–150 тыс. рублей</option>
+                            <option value="0.25">Доход свыше 150 тыс. рублей</option>
+                        </select>
+                        <button type="button" id="calculate-cofinancing-btn">Рассчитать</button>
+                        <div id="cofinancing-calculation-result" class="result"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Полезные советы -->
+            <section class="section-card">
+                <h3 class="section-title">Полезные советы</h3>
+                <ul class="tips-list">
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Всегда проверяйте условия договора с НПФ перед подписанием.
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Регулярно отслеживайте состояние своего счета в ПДС.
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Используйте налоговые вычеты для максимизации выгоды.
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="section-card" style="text-align: center; margin-top: 2rem;">
+            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Тест: Какая схема софинансирования подходит?
+        document.getElementById('check-cofinancing-btn').addEventListener('click', () => {
+            const selected = document.querySelector('input[name="income-level"]:checked');
+            const resultElement = document.getElementById('cofinancing-result');
+
+            if (selected) {
+                let message = '';
+                switch (selected.value) {
+                    case 'low':
+                        message = '✅ Вам подходит схема 1 : 1.';
+                        break;
+                    case 'medium':
+                        message = '✅ Вам подходит схема 0,5 : 1.';
+                        break;
+                    case 'high':
+                        message = '✅ Вам подходит схема 0,25 : 1.';
+                        break;
+                }
+                resultElement.textContent = message;
+                resultElement.className = 'result success';
+            } else {
+                resultElement.textContent = '❌ Пожалуйста, выберите вариант.';
+                resultElement.className = 'result error';
+            }
+        });
+
+        // Калькулятор софинансирования
+        document.getElementById('calculate-cofinancing-btn').addEventListener('click', () => {
+            const personalContribution = parseFloat(document.getElementById('personal-contribution').value);
+            const incomeLevel = parseFloat(document.getElementById('income-level-select').value);
+            const resultElement = document.getElementById('cofinancing-calculation-result');
+
+            if (!isNaN(personalContribution)) {
+                const governmentContribution = personalContribution * incomeLevel;
+                const total = personalContribution + governmentContribution;
+
+                resultElement.textContent = `💰 Ваш взнос: ${personalContribution.toFixed(2)} руб., государственный взнос: ${governmentContribution.toFixed(2)} руб., итого: ${total.toFixed(2)} руб.`;
+                resultElement.className = 'result success';
+            } else {
+                resultElement.textContent = '⚠️ Пожалуйста, введите корректные значения.';
+                resultElement.className = 'result error';
+            }
+        });
+
+        // Аккордеон
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                header.classList.toggle('active');
+                content.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-up');
+                icon.classList.toggle('fa-chevron-down');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.3. Инвестируем коллективно</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили из шаблона */
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .features-item {
+            padding: 1.2rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        /* Results */
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d1fae5;
+            color: var(--success);
+        }
+
+        .error {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        /* Tips Section */
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tips-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-image {
+                width: 30%;
+                margin-top: 2rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calculator {
+            background: var(--glass);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h4 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">5.3. Инвестируем коллективно</h1>
+                <p class="hero-description">
+                    Узнайте о преимуществах коллективных инвестиций и их основных формах.
+                </p>
+            </div>
+            <img src="collective-investments.png" alt="Коллективные инвестиции" class="hero-image animated-image">
+        </header>
+
+        <main>
+            <!-- Преимущества коллективных инвестиций -->
+            <section class="section-card">
+                <h2 class="section-title">Преимущества коллективных инвестиций</h2>
+                <ul class="features-list">
+                    <li class="features-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Профессиональное управление:</strong>
+                            <p>Управление активами осуществляется профессионалами финансового рынка.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-chart-pie"></i>
+                        <div>
+                            <strong>Диверсификация рисков:</strong>
+                            <p>Инвестиции распределяются между различными активами.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>
+                            <strong>Доступ к крупным проектам:</strong>
+                            <p>Объединение средств позволяет участвовать в масштабных инвестициях.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Формы коллективных инвестиций -->
+            <section class="section-card">
+                <h3 class="section-title">Формы коллективных инвестиций</h3>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Паевые инвестиционные фонды (ПИФы)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                ПИФы объединяют средства инвесторов для управления портфелем активов. 
+                                Виды: открытые, интервальные, закрытые. Доходность зависит от стратегии.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Акционерные инвестиционные фонды (АИФ)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                АИФы выпускают акции, которые можно покупать и продавать на бирже. 
+                                Прибыль распределяется в виде дивидендов.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Негосударственные пенсионные фонды (НПФ)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                НПФ накапливают средства для будущей пенсии. 
+                                Участники фонда получают доход от управления средствами, но результат зависит от выбранной стратегии.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section-card">
+                <h3 class="section-title">Преимущества коллективных инвестиций</h3>
+                <ul class="features-list">
+                    <li class="features-item">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <strong>Профессиональное управление:</strong>
+                            <p>Управляющие компании имеют опыт и доступ к аналитическим данным.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-chart-pie"></i>
+                        <div>
+                            <strong>Диверсификация рисков:</strong>
+                            <p>Средства распределяются между различными активами, снижая риск потерь.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <div>
+                            <strong>Доступ к крупным проектам:</strong>
+                            <p>Объединение средств позволяет участвовать в масштабных инвестициях.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="section-card">
+                <h3 class="section-title">Практические задания</h3>
+                <div class="interactive-grid">
+                    <!-- Тест: Какой фонд выбрать? -->
+                    <div class="calculator">
+                        <h4>Тест: Какой фонд выбрать?</h4>
+                        <form id="fund-test">
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="fund-type" value="pif"> Паевой инвестиционный фонд (ПИФ)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="radio" name="fund-type" value="aif"> Акционерный инвестиционный фонд (АИФ)
+                                </label>
+                            </div>
+                            <button type="button" id="check-fund-btn">Проверить</button>
+                            <div id="fund-test-result" class="result"></div>
+                        </form>
+                    </div>
+            
+                    <!-- Калькулятор доходности ПИФа -->
+                    <div class="calculator">
+                        <h4>Калькулятор доходности ПИФа</h4>
+                        <input type="number" id="investment-amount" placeholder="Сумма инвестиции (руб)">
+                        <input type="number" id="return-rate" placeholder="Процентная ставка (%)">
+                        <button type="button" id="calculate-pif-btn">Рассчитать</button>
+                        <div id="pif-income-result" class="result"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section-card">
+                <h3 class="section-title">Полезные советы</h3>
+                <ul class="tips-list">
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Всегда изучайте условия фонда перед инвестированием.
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Диверсифицируйте инвестиции, чтобы снизить риски.
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-info-circle"></i>
+                        Регулярно отслеживайте результаты работы фонда.
+                    </li>
+                </ul>
+            </section>
+            <script>
+                // Проверка теста: Какой фонд выбрать?
+                document.getElementById('check-fund-btn').addEventListener('click', () => {
+                    const selected = document.querySelector('input[name="fund-type"]:checked');
+                    const resultElement = document.getElementById('fund-test-result');
+            
+                    if (selected && selected.value === 'pif') {
+                        resultElement.textContent = '✅ Верно! ПИФы подходят для начинающих инвесторов.';
+                        resultElement.className = 'result success';
+                    } else {
+                        resultElement.textContent = '❌ Неверно. ПИФы чаще всего выбирают начинающие инвесторы.';
+                        resultElement.className = 'result error';
+                    }
+                });
+            
+                // Расчет доходности ПИФа
+                document.getElementById('calculate-pif-btn').addEventListener('click', () => {
+                    const investmentAmount = parseFloat(document.getElementById('investment-amount').value);
+                    const returnRate = parseFloat(document.getElementById('return-rate').value);
+                    const resultElement = document.getElementById('pif-income-result');
+            
+                    if (!isNaN(investmentAmount) && !isNaN(returnRate)) {
+                        const income = (investmentAmount * returnRate) / 100;
+                        resultElement.textContent = `💰 Доход по ПИФу: ${income.toFixed(2)} руб.`;
+                        resultElement.className = 'result success';
+                    } else {
+                        resultElement.textContent = '⚠️ Пожалуйста, введите корректные значения.';
+                        resultElement.className = 'result error';
+                    }
+                });
+            
+                // Аккордеон
+                document.querySelectorAll('.accordion-header').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const content = header.nextElementSibling;
+                        const icon = header.querySelector('i');
+                        header.classList.toggle('active');
+                        content.classList.toggle('active');
+                        icon.classList.toggle('fa-chevron-up');
+                        icon.classList.toggle('fa-chevron-down');
+                    });
+                });
+            </script>

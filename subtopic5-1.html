@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5.1. Что такое инвестиции</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .hero-image {
+            width: 400px;
+            filter: drop-shadow(20px 20px 30px rgba(0, 0, 0, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        /* Sections */
+        .section-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .features-item {
+            padding: 1.2rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: var(--glass);
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(99, 102, 241, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 1000px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: var(--secondary);
+        }
+
+        /* Results */
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d1fae5;
+            color: var(--success);
+        }
+
+        .error {
+            background: #fee2e2;
+            color: var(--error);
+        }
+
+        /* Tips Section */
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(248, 249, 255, 0.8);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tips-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Adaptation */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem 1rem;
+            }
+
+            .hero-image {
+                width: 30%;
+                margin-top: 2rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calculator {
+            background: var(--glass);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator h4 {
+            margin-bottom: 1rem;
+        }
+
+        .calculator input {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">5.1. Что такое инвестиции</h1>
+                <p class="hero-description">
+                    Узнайте, зачем инвестировать свободные средства и какие виды инвестиций существуют.
+                </p>
+            </div>
+            <img src="investments.png" alt="Инвестиции" class="hero-image animated-image">
+        </header>
+
+        <main>
+            <!-- Зачем нужно инвестировать? -->
+            <section class="section-card">
+                <h2 class="section-title">Зачем нужно инвестировать?</h2>
+                <p style="text-align: justify;">
+                    Инвестирование — это вложение свободных средств в активы с целью получения дохода в будущем.
+                    Основные цели инвестирования:
+                </p>
+                <ul class="features-list">
+                    <li class="features-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <div>
+                            <strong>Формирование «подушки безопасности»:</strong>
+                            <p>Защита от потери доходов.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-coins"></i>
+                        <div>
+                            <strong>Накопление на крупные покупки:</strong>
+                            <p>Создание капитала для важных целей.</p>
+                        </div>
+                    </li>
+                    <li class="features-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <strong>Пассивный доход:</strong>
+                            <p>Дополнительный источник прибыли.</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Виды инвестиций -->
+            <section class="section-card">
+                <h2 class="section-title">Виды инвестиций</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Реальные инвестиции</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <p>
+                                Вложения в имущество: недвижимость, бизнес, предметы искусства.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span>Финансовые инвестиции</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Венчурные инвестиции</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>
+                                    Высокорискованные вложения в новые проекты или стартапы.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Интеллектуальные инвестиции</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>
+                                    Вложения в образование, науку, искусство и другие интеллектуальные активы.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Факторы, определяющие ваши инвестиции -->
+                <section class="section-card">
+                    <h2 class="section-title">Факторы, определяющие ваши инвестиции</h2>
+                    <ul class="features-list">
+                        <li class="features-item">
+                            <i class="fas fa-bullseye"></i>
+                            <div>
+                                <strong>Цели:</strong>
+                                <p>Четкое понимание, зачем вы инвестируете.</p>
+                            </div>
+                        </li>
+                        <li class="features-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Срок:</strong>
+                                <p>На какой период вы готовы вложить средства.</p>
+                            </div>
+                        </li>
+                        <li class="features-item">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <div>
+                                <strong>Ликвидность:</strong>
+                                <p>Возможность быстро конвертировать активы в деньги.</p>
+                            </div>
+                        </li>
+                        <li class="features-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <div>
+                                <strong>Доходность:</strong>
+                                <p>Ожидаемая прибыль от инвестиций.</p>
+                            </div>
+                        </li>
+                        <li class="features-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <div>
+                                <strong>Риск:</strong>
+                                <p>Вероятность потери капитала.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+        
+                <!-- Практические задания -->
+                <section class="section-card">
+                    <h3 class="section-title">Практические задания</h3>
+                    <div class="interactive-grid">
+                        <!-- Тест: Какие бывают инвестиции? -->
+                        <div class="calculator">
+                            <h4>Тест: Какие бывают инвестиции?</h4>
+                            <form id="investment-types-test">
+                                <label>
+                                    <input type="radio" name="investment-type" value="real">
+                                    Реальные инвестиции
+                                </label><br>
+                                <label>
+                                    <input type="radio" name="investment-type" value="financial">
+                                    Финансовые инвестиции
+                                </label><br>
+                                <button type="button" onclick="checkInvestmentType()">Проверить</button>
+                                <p id="investment-type-result" class="result"></p>
+                            </form>
+                        </div>
+        
+                        <!-- Калькулятор доходности -->
+                        <div class="calculator">
+                            <h4>Калькулятор доходности</h4>
+                            <input type="number" id="initial-investment" placeholder="Начальная сумма (руб)">
+                            <input type="number" id="annual-return" placeholder="Годовая доходность (%)">
+                            <input type="number" id="years" placeholder="Срок (годы)">
+                            <button type="button" onclick="calculateReturn()">Рассчитать</button>
+                            <p id="return-result" class="result"></p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- Полезные советы -->
+                <section class="section-card">
+                    <h3 class="section-title">Полезные советы</h3>
+                    <ul class="tips-list">
+                        <li class="tips-item">
+                            <i class="fas fa-info-circle"></i>
+                            Определяйте цели инвестиций заранее.
+                        </li>
+                        <li class="tips-item">
+                            <i class="fas fa-info-circle"></i>
+                            Диверсифицируйте портфель для снижения рисков.
+                        </li>
+                        <li class="tips-item">
+                            <i class="fas fa-info-circle"></i>
+                            Учитывайте уровень инфляции при расчете доходности.
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        
+            <footer class="section-card" style="text-align: center; margin-top: 2rem;">
+                <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+            </footer>
+        </div>
+        
+        <script>
+            // Аккордеон
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('i');
+                    header.classList.toggle('active');
+                    content.classList.toggle('active');
+                    icon.classList.toggle('fa-chevron-up');
+                    icon.classList.toggle('fa-chevron-down');
+                });
+            });
+        
+            // Тест: Какие бывают инвестиции?
+            function checkInvestmentType() {
+                const selected = document.querySelector('input[name="investment-type"]:checked');
+                const resultElement = document.getElementById('investment-type-result');
+        
+                if (selected && selected.value === 'financial') {
+                    resultElement.textContent = '✅ Верно! Мы рассматриваем финансовые инвестиции.';
+                    resultElement.className = 'result success';
+                } else {
+                    resultElement.textContent = '❌ Неверно. В данном разделе мы говорим о финансовых инвестициях.';
+                    resultElement.className = 'result error';
+                }
+            }
+        
+            // Калькулятор доходности
+            function calculateReturn() {
+                const initialInvestment = parseFloat(document.getElementById('initial-investment').value);
+                const annualReturn = parseFloat(document.getElementById('annual-return').value);
+                const years = parseFloat(document.getElementById('years').value);
+                const resultElement = document.getElementById('return-result');
+        
+                if (!isNaN(initialInvestment) && !isNaN(annualReturn) && !isNaN(years)) {
+                    const finalAmount = initialInvestment * Math.pow(1 + annualReturn / 100, years);
+                    resultElement.textContent = `💰 Итоговая сумма: ${finalAmount.toFixed(2)} руб.`;
+                    resultElement.className = 'result success';
+                } else {
+                    resultElement.textContent = '⚠️ Пожалуйста, введите корректные значения.';
+                    resultElement.className = 'result error';
+                }
+            }
+        </script>
+        </body>
+        </html>
