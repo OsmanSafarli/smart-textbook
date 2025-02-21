@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виды финансового мошенничества - Смарт-учебник</title>
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .features-item {
+            padding: 20px;
+            background: #f9f9fb;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+            background: #f0f0f2;
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .accordion {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9fb;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #f0f0f2;
+        }
+
+        .accordion-header i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 30px;
+            max-height: 1000px;
+        }
+
+        .quiz-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-options input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+
+        #quiz-result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d4edda;
+            color: var(--success);
+        }
+
+        .error {
+            background: #f8d7da;
+            color: var(--error);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .section-card {
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title"><i class="fas fa-exclamation-triangle"></i> Виды финансового мошенничества</h1>
+                <p class="hero-description">Узнайте, как защитить свои деньги и платежные карты от мошенников, какие схемы они используют и что делать в случае атаки.</p>
+            </div>
+            <img src="via.placeholder.png" alt="Финансовое мошенничество" class="hero-image animated-image">
+        </section>
+
+        <div class="section-card">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Финансовое мошенничество: основная информация</h2>
+            <p>В заключительной главе нашего учебника мы поговорим, как противостоять финансовому мошенничеству. Ведь финансово грамотный человек умеет не только с пользой использовать свои финансовые ресурсы, инвестировать свободные средства, преумножать свои доходы, оптимизировать расходы, в том числе налоги. Не менее важно уметь защитить свои денежные средства, инвестиции в ценных бумагах и других активах, чтобы не стать жертвой мошеннических атак. Ведь «кто вооружен, тот предупрежден».</p>
+            <p>Под финансовым мошенничеством понимается совершение противоправных действий в сфере денежного обращения и финансов посредством обмана и злоупотребления доверием жертвы с целью присвоения его денежных средств и иного имущества.</p>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Способы совершения финансового мошенничества</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Чтобы обезопасить свои денежные средства и накопления от мошенников, нужно знать те приемы, которыми пользуются мошенники:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-laptop"></i> <strong>Взлом аккаунта на портале «Госуслуги»</strong> — мошенники отправляют письма или СМС о подозрительной попытке входа, просят позвонить по номеру и предоставить доступ к учетной записи. <a href="https://esia.gosuslugi.ru/public/ra/">Центры обслуживания Госуслуг</a>.</li>
+                            <li class="features-item"><i class="fas fa-phone"></i> <strong>Фейковые телефонные звонки</strong> — от имени службы безопасности банка, Банка России, МВД или ФСБ, с просьбой предоставить личные данные или код из СМС. Не сообщайте данные карты или коды!</li>
+                            <li class="features-item"><i class="fas fa-sms"></i> <strong>Смишинг (фишинговые СМС)</strong> — сообщения о пополнении счета, выигрыше приза или переводе пенсий в цифровые рубли, с просьбой перевести деньги или сообщить код из СМС.</li>
+                            <li class="features-item"><i class="fas fa-comment"></i> <strong>Фейковые звонки в мессенджерах</strong> — от имени руководителя или родственника, с просьбой перевести деньги или предоставить данные.</li>
+                            <li class="features-item"><i class="fas fa-envelope"></i> <strong>Спам-письма на электронную почту</strong> — с вирусами, предложениями юридических услуг, фейковыми уведомлениями о задолженностях и ссылками на оплату.</li>
+                            <li class="features-item"><i class="fas fa-credit-card"></i> <strong>Скимминг</strong> — установка устройств на банкоматы для копирования данных карты и ПИН-кода.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Что делать, если вам позвонил мошенник</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Если вам позвонил мошенник:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-phone-slash"></i> Немедленно прервите звонок, если просят перевести деньги на «безопасный» счет или сообщить код из СМС.</li>
+                            <li class="features-item"><i class="fas fa-user-check"></i> Перезвоните на официальный номер банка или родственника, чтобы проверить информацию.</li>
+                            <li class="features-item"><i class="fas fa-exclamation-triangle"></i> Не сообщайте личные данные, коды из СМС или данные карты.</li>
+                            <li class="features-item"><i class="fas fa-shield-alt"></i> Обратитесь в банк или полицию, если данные уже переданы.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Как не попасть на фишинговый сайт</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Чтобы избежать фишинговых сайтов:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-link"></i> Проверяйте URL сайта: он должен начинаться с «https://» и соответствовать официальному домену.</li>
+                            <li class="features-item"><i class="fas fa-exclamation-circle"></i> Не переходите по ссылкам из подозрительных СМС или писем.</li>
+                            <li class="features-item"><i class="fas fa-search"></i> Используйте поисковик для перехода на официальный сайт банка или организации.</li>
+                            <li class="features-item"><i class="fas fa-shield-alt"></i> Установите антивирус и обновляйте браузер для защиты от вредоносных сайтов.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Как безопасно снимать наличные с банкомата</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Для безопасного снятия наличных:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-building"></i> Используйте банкоматы в отделениях банков или охраняемых местах.</li>
+                            <li class="features-item"><i class="fas fa-eye"></i> Проверяйте банкомат на наличие подозрительных устройств (скиммеров).</li>
+                            <li class="features-item"><i class="fas fa-keyboard"></i> Прикрывайте клавиатуру рукой при вводе ПИН-кода.</li>
+                            <li class="features-item"><i class="fas fa-credit-card"></i> Не позволяйте посторонним помогать вам у банкомата.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Период охлаждения денежных переводов и выдачи кредитов</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Период охлаждения — это время, в течение которого можно отменить денежный перевод или заявку на кредит, если есть подозрения на мошенничество. Это помогает:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-clock"></i> Дать время на проверку ситуации.</li>
+                            <li class="features-item"><i class="fas fa-shield-alt"></i> Защитить средства от мошенников, если перевод был сделан под давлением.</li>
+                            <li class="features-item"><i class="fas fa-exclamation-triangle"></i> Предотвратить оформление кредитов на ваше имя.</li>
+                        </ul>
+                        <p>Обратитесь в банк, чтобы уточнить условия периода охлаждения.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Тест для самопроверки</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="quiz-container">
+                            <form id="quiz-form">
+                                <div class="quiz-question">
+                                    <p>1. Что такое смишинг?</p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> Фишинговые СМС-сообщения</label>
+                                        <label><input type="radio" name="q1" value="b"> Взлом аккаунта на Госуслугах</label>
+                                        <label><input type="radio" name="q1" value="c"> Скимминг в банкомате</label>
+                                        <label><input type="radio" name="q1" value="d"> Звонки от имени банка</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-question">
+                       <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> Сообщить код из СМС</label>
+                                        <label><input type="radio" name="q2" value="b"> Прервать звонок и перезвонить в банк</label>
+                                        <label><input type="radio" name="q2" value="c"> Установить приложение по ссылке</label>
+                                        <label><input type="radio" name="q2" value="d"> Перевести деньги на "безопасный" счет</label>
+                                    </div>
+                                </div>
+                                <div class="quiz-question">
+                                    <p>3. Как безопасно проверить электронное письмо от госоргана?</p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> Открыть вложения в письме</label>
+                                        <label><input type="radio" name="q3" value="b"> Проверить адрес отправителя</label>
+                                        <label><input type="radio" name="q3" value="c"> Перейти по ссылке в письме</label>
+                                        <label><input type="radio" name="q3" value="d"> Оплатить указанную задолженность</label>
+                                    </div>
+                                </div>
+                                <button type="button" class="submit-btn" onclick="checkQuiz()">Проверить</button>
+                            </form>
+                            <div id="quiz-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Аккордеон
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                const isActive = content.classList.contains('active');
+
+                // Закрыть все открытые аккордеоны
+                document.querySelectorAll('.accordion-content.active').forEach(activeContent => {
+                    activeContent.classList.remove('active');
+                    activeContent.previousElementSibling.querySelector('i').classList.remove('active');
+                });
+
+                // Открыть текущий аккордеон, если он не был активен
+                if (!isActive) {
+                    content.classList.add('active');
+                    icon.classList.add('active');
+                }
+            });
+        });
+
+        // Проверка теста
+        function checkQuiz() {
+            const form = document.getElementById('quiz-form');
+            const resultDiv = document.getElementById('quiz-result');
+            let score = 0;
+
+            const q1 = form.q1.value;
+            const q2 = form.q2.value;
+            const q3 = form.q3.value;
+
+            // Правильные ответы
+            if (q1 === 'a') score++; // Фишинговые СМС-сообщения
+            if (q2 === 'b') score++; // Прервать звонок и перезвонить в банк
+            if (q3 === 'b') score++; // Проверить адрес отправителя
+
+            resultDiv.innerHTML = `Вы набрали ${score} из 3 баллов.`;
+            resultDiv.className = score === 3 ? 'success' : 'error';
+        }
+    </script>
+</body>
+</html>

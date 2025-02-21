@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверим усвоенный материал - Смарт-учебник</title>
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0071e3; /* Основной синий цвет, как на сайте ПСБ */
+            --secondary: #005bb5; /* Темно-синий для hover */
+            --background: #f5f5f7; /* Светлый фон */
+            --text-dark: #333333; /* Темный текст */
+            --text-light: #ffffff; /* Белый текст */
+            --accent: #ff9500; /* Акцентный оранжевый */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --border: #e0e0e0; /* Светлая граница */
+            --success: #28a745; /* Зеленый для успешного результата теста */
+            --error: #dc3545; /* Красный для ошибки в тесте */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            position: relative;
+            margin: 40px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
+            border-radius: 20px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .features-item {
+            padding: 20px;
+            background: #f9f9fb;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+            background: #f0f0f2;
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .accordion {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9fb;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #f0f0f2;
+        }
+
+        .accordion-header i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 30px;
+            max-height: 1000px;
+        }
+
+        .quiz-container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+        }
+
+        .quiz-question {
+            margin-bottom: 20px;
+        }
+
+        .quiz-options label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-options input {
+            margin-right: 10px;
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary);
+        }
+
+        #quiz-result-1, #quiz-result-2, #quiz-result-3 {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .success {
+            background: #d4edda;
+            color: var(--success);
+        }
+
+        .error {
+            background: #f8d7da;
+            color: var(--error);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .section-card {
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title"><i class="fas fa-check-circle"></i> Проверим усвоенный материал</h1>
+                </div>
+                <img src="https://via.placeholder.com/400x300" alt="Проверка знаний" class="hero-image animated-image">
+            </section>
+    
+            <div class="section-card">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> Тесты для проверки знаний</h2>
+    
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span><i class="fas fa-chevron-down"></i> Тема 1. Деньги: слуга или хозяин</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="quiz-container">
+                                <form id="quiz-form-1">
+                                    <div class="quiz-question">
+                                        <p>1. Вам необходимо оплатить задолженность по коммунальным услугам. Выберите наиболее предпочтительный способ с учетом экономии времени, денег, скорости зачисления, надежности и простоты:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q1-1" value="a"> Пойти в банк и оплатить квитанцию</label>
+                                            <label><input type="radio" name="q1-1" value="b"> Через платежный терминал в супермаркете</label>
+                                            <label><input type="radio" name="q1-1" value="c"> Через мобильное приложение банк-онлайн</label>
+                                            <label><input type="radio" name="q1-1" value="d"> Через электронный кошелек</label>
+                                            <label><input type="radio" name="q1-1" value="e"> Через портал госуслуг</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>2. Родственники подарили 300 у.е. Через месяц вы обменяли 150 у.е. (курс покупки 101 руб./у.е., продажи 104 руб./у.е.), через 2 месяца купили 150 у.е. (курс покупки 103 руб./у.е., продажи 107 руб./у.е.). Сколько рублей вы сэкономили (+) / потеряли (-) при конверсионных операциях?</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q1-2" value="a"> +150 руб.</label>
+                                            <label><input type="radio" name="q1-2" value="b"> -300 руб.</label>
+                                            <label><input type="radio" name="q1-2" value="c"> -900 руб.</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>3. Юридический статус криптовалюты в РФ:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q1-3" value="a"> Безналичные деньги</label>
+                                            <label><input type="radio" name="q1-3" value="b"> Наличные деньги</label>
+                                            <label><input type="radio" name="q1-3" value="c"> Цифровые деньги</label>
+                                            <label><input type="radio" name="q1-3" value="d"> Цифровой финансовый актив</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>4. Рост цен 1% в месяц. На сколько % увеличатся расходы на потребительскую корзину через год и на сколько % снизится покупательная способность денег (округлить до 0,1%)?</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q1-4" value="a"> 12% и 12%</label>
+                                            <label><input type="radio" name="q1-4" value="b"> 12,7% и 11,3%</label>
+                                            <label><input type="radio" name="q1-4" value="c"> 12% и 10,7%</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>5. Вы одолжили другу 100 000 руб. на 1 год. Рост цен 12,9%. Реальный размер суммы через год и снижение покупательной способности (округлить до целого и 0,1%)?</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q1-5" value="a"> 87 100 руб. и 12,9%</label>
+                                            <label><input type="radio" name="q1-5" value="b"> 88 574 руб. и 11,4%</label>
+                                            <label><input type="radio" name="q1-5" value="c"> 87 100 руб. и 11,4%</label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="submit-btn" onclick="checkQuiz1()">Проверить</button>
+                                </form>
+                                <div id="quiz-result-1"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span><i class="fas fa-chevron-down"></i> Тема 2. Личный бюджет: зачем вести и как управлять</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="quiz-container">
+                                <form id="quiz-form-2">
+                                    <div class="quiz-question">
+                                        <p>1. Прожиточный минимум 18 749 руб., федеральный МРОТ 22 440 руб., региональный МРОТ на 10% выше. Минимальная зарплата за полный месяц:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q2-1" value="a"> 18 749 руб.</label>
+                                            <label><input type="radio" name="q2-1" value="b"> 22 440 руб.</label>
+                                            <label><input type="radio" name="q2-1" value="c"> 24 640 руб.</label>
+                                            <label><input type="radio" name="q2-1" value="d"> Минимальная оплата труда в организации</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>2. Зарплата 70 тыс. руб., расходы на питание и услуги 50 тыс. руб., кредит 7,2 тыс. руб., ОСАГО 5,8 тыс. руб., доход от аренды 35 тыс. руб. (налог 4%), ИПЦ 1,095. Реально располагаемый доход (округлить до 0,01 руб.):</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q2-2" value="a"> 38,36 тыс. руб.</label>
+                                            <label><input type="radio" name="q2-2" value="b"> 37,08 тыс. руб.</label>
+                                            <label><input type="radio" name="q2-2" value="c"> 82,74 тыс. руб.</label>
+                                            <label><input type="radio" name="q2-2" value="d"> 84,00 тыс. руб.</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>3. При составлении бюджета в составе доходов НЕ учитывается:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q2-3" value="a"> Ежемесячные пособия на детей</label>
+                                            <label><input type="radio" name="q2-3" value="b"> Проценты по вкладам</label>
+                                            <label><input type="radio" name="q2-3" value="c"> Выигрыш в лотерею</label>
+                                            <label><input type="radio" name="q2-3" value="d"> Полученный кредит банка</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>4. Семья Калинкиных: доходы (зарплата матери 85 тыс. руб., отца 120 тыс. руб., премия отца 50 тыс. руб., проценты по вкладу 250 тыс. руб. под 18% простые), расходы (еда 115 тыс. руб., кредит 49 тыс. руб., карманные 10 тыс. руб., одежда 15 тыс. руб., подарки 5 тыс. руб.). Тип бюджета и изменение сальдо без премии:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q2-4" value="a"> Сбалансированный, да</label>
+                                            <label><input type="radio" name="q2-4" value="b"> Дефицитный, нет</label>
+                                            <label><input type="radio" name="q2-4" value="c"> Профицитный (64,7 тыс. руб.), да</label>
+                                            <label><input type="radio" name="q2-4" value="d"> Профицитный (64,7 тыс. руб.), нет</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>5. Доход 150 тыс. руб./мес., откладываете 15%, тур 185 тыс. руб., рост цен 9%. Период накопления (округлить до месяцев):</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q2-5" value="a"> 8 месяцев</label>
+                                            <label><input type="radio" name="q2-5" value="b"> 9 месяцев</label>
+                                            <label><input type="radio" name="q2-5" value="c"> 12 месяцев</label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="submit-btn" onclick="checkQuiz2()">Проверить</button>
+                                </form>
+                                <div id="quiz-result-2"></div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span><i class="fas fa-chevron-down"></i> Тема 3. Банковские вклады: копим с умом</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="quiz-container">
+                                <form id="quiz-form-3">
+                                    <div class="quiz-question">
+                                        <p>1. Вклад 100 000 руб., инфляция 12,5%, ставка 18% годовых. Реальный размер через 1 год (округлить до руб.):</p>
+                                        <p>1) Простая ставка:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-1a" value="a"> 118 000 руб.</label>
+                                            <label><input type="radio" name="q3-1a" value="b"> 104 889 руб.</label>
+                                            <label><input type="radio" name="q3-1a" value="c"> 103 250 руб.</label>
+                                        </div>
+                                        <p>2) Сложная ставка:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-1b" value="a"> 119 560 руб.</label>
+                                            <label><input type="radio" name="q3-1b" value="b"> 104 615 руб.</label>
+                                            <label><input type="radio" name="q3-1b" value="c"> 106 276 руб.</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>2. 50 000 руб., банк "Зенит" 16,8% с ежемесячной капитализацией, банк "Арсенал" 18% простые проценты. Выгоднее на 181 день и 1 год:</p>
+                                        <p>181 день:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-2a" value="a"> Зенит</label>
+                                            <label><input type="radio" name="q3-2a" value="b"> Арсенал</label>
+                                        </div>
+                                        <p>1 год:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-2b" value="a"> Зенит</label>
+                                            <label><input type="radio" name="q3-2b" value="b"> Арсенал</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>3. Вклад 70 000 руб., 22% годовых, капитализация в конце года, простой процент в течение года. Сумма через 3 года (округлить до руб.):</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-3" value="a"> 116 200 руб.</label>
+                                            <label><input type="radio" name="q3-3" value="b"> 127 109 руб.</label>
+                                            <label><input type="radio" name="q3-3" value="c"> 130 929 руб.</label>
+                                            <label><input type="radio" name="q3-3" value="d"> 134 627 руб.</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>4. Вклад 500 000 руб., 9% годовых, простые проценты, с 15.01.2022, отзыв лицензии 10.02.2024. Страховое возмещение от АСВ:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-4" value="a"> 500 000 руб.</label>
+                                            <label><input type="radio" name="q3-4" value="b"> 593 082 руб.</label>
+                                            <label><input type="radio" name="q3-4" value="c"> 597 696 руб.</label>
+                                            <label><input type="radio" name="q3-4" value="d"> 1 400 000 руб.</label>
+                                        </div>
+                                    </div>
+                                    <div class="quiz-question">
+                                        <p>5. Два вклада: рублевый 350 000 руб., 8% с ежеквартальной капитализацией, с 15.01.2022; валютный 15 000 у.е., 0,5% простые, с 10.08.2021, курс 85 руб./у.е., отзыв лицензии 10.03.2024. Страховое возмещение от АСВ:</p>
+                                        <div class="quiz-options">
+                                            <label><input type="radio" name="q3-5" value="a"> 1 370 000 руб.</label>
+                                            <label><input type="radio" name="q3-5" value="b"> 1 400 000 руб.</label>
+                                            <label><input type="radio" name="q3-5" value="c"> 1 448 007 руб.</label>
+                                            <label><input type="radio" name="q3-5" value="d"> 414 917 руб. и 12 154 у.е.</label>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="submit-btn" onclick="checkQuiz3()">Проверить</button>
+                                </form>
+                                <div id="quiz-result-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // Аккордеон
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('i');
+                    const isActive = content.classList.contains('active');
+    
+                    // Закрыть все открытые аккордеоны
+                    document.querySelectorAll('.accordion-content.active').forEach(activeContent => {
+                        activeContent.classList.remove('active');
+                        activeContent.previousElementSibling.querySelector('i').classList.remove('active');
+                    });
+    
+                    // Открыть текущий аккордеон, если он не был активен
+                    if (!isActive) {
+                        content.classList.add('active');
+                        icon.classList.add('active');
+                    }
+                });
+            });
+    
+            // Проверка теста по теме 1
+            function checkQuiz1() {
+                const form = document.getElementById('quiz-form-1');
+                const resultDiv = document.getElementById('quiz-result-1');
+                let score = 0;
+    
+                const q1 = form['q1-1'].value;
+                const q2 = form['q1-2'].value;
+                const q3 = form['q1-3'].value;
+                const q4 = form['q1-4'].value;
+                const q5 = form['q1-5'].value;
+    
+                // Правильные ответы
+// Правильные ответы
+if (q1 === 'c') score++; // Через мобильное приложение банк-онлайн
+            if (q2 === 'c') score++; // -900 руб.
+            if (q3 === 'd') score++; // Цифровой финансовый актив
+            if (q4 === 'b') score++; // 12,7% и 11,3%
+            if (q5 === 'b') score++; // 88 574 руб. и 11,4%
+
+            resultDiv.innerHTML = `Вы набрали ${score} из 5 баллов.`;
+            resultDiv.className = score === 5 ? 'success' : 'error';
+        }
+
+        // Проверка теста по теме 2
+        function checkQuiz2() {
+            const form = document.getElementById('quiz-form-2');
+            const resultDiv = document.getElementById('quiz-result-2');
+            let score = 0;
+
+            const q1 = form['q2-1'].value;
+            const q2 = form['q2-2'].value;
+            const q3 = form['q2-3'].value;
+            const q4 = form['q2-4'].value;
+            const q5 = form['q2-5'].value;
+
+            // Правильные ответы
+            if (q1 === 'c') score++; // 24 640 руб.
+            if (q2 === 'c') score++; // 82,74 тыс. руб.
+            if (q3 === 'd') score++; // Полученный кредит банка
+            if (q4 === 'd') score++; // Профицитный (64,7 тыс. руб.), нет
+            if (q5 === 'b') score++; // 9 месяцев
+
+            resultDiv.innerHTML = `Вы набрали ${score} из 5 баллов.`;
+            resultDiv.className = score === 5 ? 'success' : 'error';
+        }
+
+        // Проверка теста по теме 3
+        function checkQuiz3() {
+            const form = document.getElementById('quiz-form-3');
+            const resultDiv = document.getElementById('quiz-result-3');
+            let score = 0;
+
+            const q1a = form['q3-1a'].value;
+            const q1b = form['q3-1b'].value;
+            const q2a = form['q3-2a'].value;
+            const q2b = form['q3-2b'].value;
+            const q3 = form['q3-3'].value;
+            const q4 = form['q3-4'].value;
+            const q5 = form['q3-5'].value;
+
+            // Правильные ответы
+            if (q1a === 'b') score++; // 104 889 руб. (простая ставка)
+            if (q1b === 'c') score++; // 106 276 руб. (сложная ставка)
+            if (q2a === 'b') score++; // Арсенал (181 день)
+            if (q2b === 'a') score++; // Зенит (1 год)
+            if (q3 === 'b') score++; // 127 109 руб.
+            if (q4 === 'b') score++; // 593 082 руб.
+            if (q5 === 'b') score++; // 1 400 000 руб.
+
+            resultDiv.innerHTML = `Вы набрали ${score} из 7 баллов.`;
+            resultDiv.className = score === 7 ? 'success' : 'error';
+        }
+    </script>
+</body>
+</html>

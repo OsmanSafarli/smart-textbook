@@ -41,6 +41,8 @@
             border-radius: 1.5rem;
             color: white;
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
         .header h1 {
             font-size: 2rem;
@@ -50,6 +52,42 @@
         .header p {
             font-size: 1.1rem;
             opacity: 0.9;
+        }
+        /* Анимация фона в баннере */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: skewX(-25deg);
+            animation: moveBackground 5s infinite linear;
+        }
+        @keyframes moveBackground {
+            0% {
+                left: -50%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+        /* Анимированная PNG-картинка */
+        .header img {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
         /* Sections */
         .section {
@@ -218,171 +256,172 @@
         <header class="header">
             <h1>1.6. Деньги рождают деньги: как их накапливать</h1>
             <p>Узнайте о способах защиты сбережений от инфляции и методах получения дополнительного дохода.</p>
+            <!-- Анимированная PNG-картинка -->
+            <img src="https://i.imgur.com/your-animated-png.png" alt="Анимированная иконка">
         </header>
 
-        <!-- Main Content -->
-        <main class="content">
-            <!-- Раздел: Что такое финансовые инструменты? -->
-            <section class="section">
-                <h2>Что такое финансовые инструменты?</h2>
-                <p style="text-align: justify;">
-                    Финансовые инструменты — это специальные формы вложения денежных средств в продукты, предлагаемые финансовыми организациями. Например, банковские вклады, накопительные счета, золотые слитки и ценные бумаги.
-                </p>
-            </section>
+<!-- Main Content -->
+<main class="content">
+    <!-- Раздел: Что такое финансовые инструменты? -->
+    <section class="section">
+        <h2>Что такое финансовые инструменты?</h2>
+        <p style="text-align: justify;">
+            Финансовые инструменты — это специальные формы вложения денежных средств в продукты, предлагаемые финансовыми организациями. Например, банковские вклады, накопительные счета, золотые слитки и ценные бумаги.
+        </p>
+    </section>
 
-            <!-- Аккордеон: Вложения в инструменты, защищаемые государством -->
-            <section class="accordion-section">
-                <div class="accordion-item">
-                    <div class="accordion-header">Вложения в инструменты, защищаемые государством</div>
-                    <div class="accordion-content">
-                        <ul class="features">
-                            <li><i class="fas fa-university"></i> <strong>Банковские вклады:</strong> гарантируются системой страхования вкладов до 1 400 000 рублей.</li>
-                            <li><i class="fas fa-piggy-bank"></i> <strong>Накопительные счета:</strong> также попадают под защиту системы страхования вкладов.</li>
-                        </ul>
-                        <p style="text-align: justify;">
-                            Сравнить условия банковских вкладов можно с помощью приложений banki.ru или sravni.ru, выбрав нужный регион.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Раздел: Инвестиции в золото -->
-            <section class="section">
-                <h3>Инвестиции в золото</h3>
-                <p style="text-align: justify;">
-                    Золотые слитки являются популярным инвестиционным активом. Их стоимость формируется на мировом рынке драгоценных металлов и может меняться в течение дня. Однако они не защищены государством, как банковские вклады.
-                </p>
-            </section>
-
-            <!-- Раздел: Ценные бумаги -->
-            <section class="section">
-                <h3>Ценные бумаги</h3>
-                <p style="text-align: justify;">
-                    Акции и облигации — это более сложные финансовые инструменты, которые могут принести высокий доход, но связаны с рисками. Подробнее об этих инструментах будет рассказано в следующих параграфах.
-                </p>
-            </section>
-
-            <!-- Интерактивные практические задания -->
-            <section class="interactive-tasks">
-                <h3 class="chapter-title">Интерактивные практические задания</h3>
-
-                <!-- Задание 1: Тест -->
-                <div class="task-card">
-                    <h4>Задание 1: Какие финансовые инструменты защищаются государством?</h4>
-                    <form id="protected-instruments-form">
-                        <label>
-                            <input type="checkbox" name="protected-instruments" value="deposits"> a) Банковские вклады.
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="protected-instruments" value="savings-accounts"> b) Накопительные счета.
-                        </label><br>
-                        <label>
-                            <input type="checkbox" name="protected-instruments" value="gold"> c) Золотые слитки.
-                        </label><br>
-                        <button type="button" onclick="checkTask1()">Проверить ответ</button>
-                        <p id="protected-instruments-result"></p>
-                    </form>
-                </div>
-
-                <!-- Задание 2: Расчет -->
-                <div class="task-card">
-                    <h4>Задание 2: Рассчитайте доход по банковскому вкладу</h4>
-                    <p>
-                        Предположим, вы положили 100 000 рублей на вклад сроком на 1 год под 8% годовых. Какую сумму вы получите через год?
-                    </p>
-                    <form id="deposit-calculation-form">
-                        <input type="number" id="deposit-calculation-answer" placeholder="Введите ваш ответ">
-                        <button type="button" onclick="checkTask2()">Проверить ответ</button>
-                        <p id="deposit-calculation-result"></p>
-                    </form>
-                </div>
-
-                <!-- Задание 3: Выбор варианта -->
-                <div class="task-card">
-                    <h4>Задание 3: Что такое система страхования вкладов?</h4>
-                    <form id="deposit-insurance-form">
-                        <label>
-                            <input type="radio" name="deposit-insurance" value="a"> a) Программа лояльности банка.
-                        </label><br>
-                        <label>
-                            <input type="radio" name="deposit-insurance" value="b"> b) Государственная программа защиты сбережений граждан.
-                        </label><br>
-                        <button type="button" onclick="checkTask3()">Проверить ответ</button>
-                        <p id="deposit-insurance-result"></p>
-                    </form>
-                </div>
-            </section>
-
-            <!-- Раздел: Интересный факт -->
-            <section class="section tips-section">
-                <h3>Знаете ли вы?</h3>
-                <ul class="tips">
-                    <li><i class="fas fa-info-circle"></i> Система страхования вкладов гарантирует возмещение до 1 400 000 рублей.</li>
-                    <li><i class="fas fa-info-circle"></i> Инвестиции в золото требуют учета рыночной стоимости и комиссии банка.</li>
+    <!-- Аккордеон: Вложения в инструменты, защищаемые государством -->
+    <section class="accordion-section">
+        <div class="accordion-item">
+            <div class="accordion-header">Вложения в инструменты, защищаемые государством</div>
+            <div class="accordion-content">
+                <ul class="features">
+                    <li><i class="fas fa-university"></i> <strong>Банковские вклады:</strong> гарантируются системой страхования вкладов до 1 400 000 рублей.</li>
+                    <li><i class="fas fa-piggy-bank"></i> <strong>Накопительные счета:</strong> также попадают под защиту системы страхования вкладов.</li>
                 </ul>
-            </section>
-        </main>
+                <p style="text-align: justify;">
+                    Сравнить условия банковских вкладов можно с помощью приложений banki.ru или sravni.ru, выбрав нужный регион.
+                </p>
+            </div>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
-        </footer>
-    </div>
+    <!-- Раздел: Инвестиции в золото -->
+    <section class="section">
+        <h3>Инвестиции в золото</h3>
+        <p style="text-align: justify;">
+            Золотые слитки являются популярным инвестиционным активом. Их стоимость формируется на мировом рынке драгоценных металлов и может меняться в течение дня. Однако они не защищены государством, как банковские вклады.
+        </p>
+    </section>
 
-    <script>
-                                // Аккордеон
-                                document.querySelectorAll('.accordion-header').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.closest('.accordion-item');
-                item.classList.toggle('open');
-            });
-        });
+    <!-- Раздел: Ценные бумаги -->
+    <section class="section">
+        <h3>Ценные бумаги</h3>
+        <p style="text-align: justify;">
+            Акции и облигации — это более сложные финансовые инструменты, которые могут принести высокий доход, но связаны с рисками. Подробнее об этих инструментах будет рассказано в следующих параграфах.
+        </p>
+    </section>
 
-        // Проверка задания 1: Какие финансовые инструменты защищаются государством?
-        function checkTask1() {
-            const checkboxes = document.querySelectorAll('input[name="protected-instruments"]:checked');
-            const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
-            const correctAnswers = ['deposits', 'savings-accounts']; // Банковские вклады и накопительные счета
-            const resultElement = document.getElementById('protected-instruments-result');
+    <!-- Интерактивные практические задания -->
+    <section class="interactive-tasks">
+        <h3 class="chapter-title">Интерактивные практические задания</h3>
 
-            if (selectedValues.length !== correctAnswers.length || !correctAnswers.every(value => selectedValues.includes(value))) {
-                resultElement.textContent = '❌ Неверно! Правильные ответы: a) Банковские вклады, b) Накопительные счета.';
-                resultElement.style.color = 'red';
+        <!-- Задание 1: Тест -->
+        <div class="task-card">
+            <h4>Задание 1: Какие финансовые инструменты защищаются государством?</h4>
+            <form id="protected-instruments-form">
+                <label>
+                    <input type="checkbox" name="protected-instruments" value="deposits"> a) Банковские вклады.
+                </label><br>
+                <label>
+                    <input type="checkbox" name="protected-instruments" value="savings-accounts"> b) Накопительные счета.
+                </label><br>
+                <label>
+                    <input type="checkbox" name="protected-instruments" value="gold"> c) Золотые слитки.
+                </label><br>
+                <button type="button" onclick="checkTask1()">Проверить ответ</button>
+                <p id="protected-instruments-result"></p>
+            </form>
+        </div>
+
+        <!-- Задание 2: Расчет -->
+        <div class="task-card">
+            <h4>Задание 2: Рассчитайте доход по банковскому вкладу</h4>
+            <p>
+                Предположим, вы положили 100 000 рублей на вклад сроком на 1 год под 8% годовых. Какую сумму вы получите через год?
+            </p>
+            <form id="deposit-calculation-form">
+                <input type="number" id="deposit-calculation-answer" placeholder="Введите ваш ответ">
+                <button type="button" onclick="checkTask2()">Проверить ответ</button>
+                <p id="deposit-calculation-result"></p>
+            </form>
+        </div>
+
+        <!-- Задание 3: Выбор варианта -->
+        <div class="task-card">
+            <h4>Задание 3: Что такое система страхования вкладов?</h4>
+            <form id="deposit-insurance-form">
+                <label>
+                    <input type="radio" name="deposit-insurance" value="a"> a) Программа лояльности банка.
+                </label><br>
+                <label>
+                    <input type="radio" name="deposit-insurance" value="b"> b) Государственная программа защиты сбережений граждан.
+                </label><br>
+                <button type="button" onclick="checkTask3()">Проверить ответ</button>
+                <p id="deposit-insurance-result"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Раздел: Интересный факт -->
+    <section class="section tips-section">
+        <h3>Знаете ли вы?</h3>
+        <ul class="tips">
+            <li><i class="fas fa-info-circle"></i> Система страхования вкладов гарантирует возмещение до 1 400 000 рублей.</li>
+            <li><i class="fas fa-info-circle"></i> Золото традиционно считается "защитным" активом во время экономической нестабильности.</li>
+            <li><i class="fas fa-info-circle"></i> Первые акции появились в XVII веке в Нидерландах для финансирования торговых экспедиций.</li>
+        </ul>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2023 Финансовая грамотность. Все права защищены.</p>
+</footer>
+</div>
+
+<script>
+// JavaScript для работы аккордеона
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+    });
+});
+
+// Проверка ответов на интерактивные задания
+function checkTask1() {
+    const form = document.getElementById('protected-instruments-form');
+    const result = document.getElementById('protected-instruments-result');
+    const selected = Array.from(form.elements['protected-instruments'])
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+    if (selected.includes('deposits') && selected.includes('savings-accounts') && !selected.includes('gold')) {
+        result.textContent = 'Правильно! Банковские вклады и накопительные счета защищаются государством.';
+        result.style.color = 'green';
+    } else {
+        result.textContent = 'Неверно. Попробуйте еще раз.';
+        result.style.color = 'red';
+    }
+}
+
+function checkTask2() {
+    const answer = document.getElementById('deposit-calculation-answer').value;
+    const result = document.getElementById('deposit-calculation-result');
+    const correctAnswer = 108000;
+
+    if (parseInt(answer) === correctAnswer) {
+        result.textContent = 'Правильно! Вы получите 108 000 рублей через год.';
+        result.style.color = 'green';
+    } else {
+        result.textContent = 'Неверно. Попробуйте еще раз.';
+        result.style.color = 'red';
+    }
+}
+
+function checkTask3() {
+            const form = document.getElementById('deposit-insurance-form');
+            const result = document.getElementById('deposit-insurance-result');
+            const selected = form.querySelector('input[name="deposit-insurance"]:checked');
+
+            if (selected && selected.value === 'b') {
+                result.textContent = 'Правильно! Это государственная программа защиты сбережений граждан.';
+                result.style.color = 'green';
             } else {
-                resultElement.textContent = '✅ Верно!';
-                resultElement.style.color = 'green';
-            }
-        }
-
-        // Проверка задания 2: Рассчитайте доход по банковскому вкладу
-        function checkTask2() {
-            const answer = parseFloat(document.getElementById('deposit-calculation-answer').value);
-            const depositAmount = 100000; // Сумма вклада
-            const interestRate = 0.08; // Процентная ставка (8%)
-            const correctAnswer = depositAmount * (1 + interestRate); // 100000 * 1.08 = 108000
-
-            const resultElement = document.getElementById('deposit-calculation-result');
-            if (!isNaN(answer) && answer === correctAnswer) {
-                resultElement.textContent = '✅ Верный расчет!';
-                resultElement.style.color = 'green';
-            } else {
-                resultElement.textContent = `❌ Неправильно. Правильный ответ: ${correctAnswer.toFixed(2)} рублей.`;
-                resultElement.style.color = 'red';
-            }
-        }
-
-        // Проверка задания 3: Что такое система страхования вкладов?
-        function checkTask3() {
-            const selectedValue = document.querySelector('input[name="deposit-insurance"]:checked')?.value;
-            const correctAnswer = 'b'; // Государственная программа защиты сбережений граждан
-            const resultElement = document.getElementById('deposit-insurance-result');
-
-            if (selectedValue === correctAnswer) {
-                resultElement.textContent = '✅ Правильно!';
-                resultElement.style.color = 'green';
-            } else {
-                resultElement.textContent = '❌ Неверно! Правильный ответ: b) Государственная программа защиты сбережений граждан.';
-                resultElement.style.color = 'red';
+                result.textContent = 'Неверно. Попробуйте еще раз.';
+                result.style.color = 'red';
             }
         }
     </script>

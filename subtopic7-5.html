@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Как платить налогов меньше. Налоговые вычеты</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #4f46e5;
+      --accent: #818cf8;
+      --background: #f8fafc;
+      --text-dark: #1e293b;
+      --text-light: #f1f5f9;
+      --glass: rgba(255, 255, 255, 0.9);
+      --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --success: #10b981;
+      --error: #ef4444;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      background: var(--background);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .hero-section {
+      position: relative;
+      margin: 2rem 0 4rem;
+      padding: 4rem 2rem;
+      background: var(--gradient);
+      border-radius: 2rem;
+      color: white;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .section-card {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+    .section-card:hover {
+      transform: translateY(-5px);
+    }
+    .accordion-header {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(99, 102, 241, 0.1);
+      transition: background 0.3s ease;
+    }
+    .accordion-header:hover {
+      background: rgba(99, 102, 241, 0.2);
+    }
+    .accordion-content {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .accordion-content.active {
+      padding: 1.5rem;
+      max-height: 1000px;
+    }
+    .interactive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .calculator {
+      background: var(--glass);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .animated-image {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .feature-icon {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-right: 1rem;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .highlight {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Hero Section -->
+    <header class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Как платить налогов меньше. Налоговые вычеты</h1>
+        <p class="hero-description">
+          Узнайте о налоговых льготах, вычетах и способах уменьшения налоговой нагрузки.
+        </p>
+      </div>
+      <img src="taxes.png" alt="Налоги" class="hero-image animated-image">
+    </header>
+
+    <main>
+      <!-- Раздел: Льготы по НДФЛ -->
+      <section class="section-card">
+        <h2 class="section-title">Льготы по НДФЛ</h2>
+        <div class="feature-item">
+          <i class="fas fa-hand-holding-usd feature-icon"></i>
+          <p><span class="highlight">Семьи с детьми</span> могут получить льготы при среднедушевом доходе менее 1,5 прожиточных минимумов.</p>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-users feature-icon"></i>
+          <p><span class="highlight">Участники ГТО</span> получают налоговый вычет за сдачу нормативов.</p>
+        </div>
+        <div class="accordion">
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>Кто может получить льготы?</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <p>
+                Право на льготы имеют семьи, где:
+                <ul>
+                  <li>Всем детям до 18 лет или до 23 лет включительно, если они учатся очно.</li>
+                  <li>Среднедушевой доход не более 1,5 прожиточного минимума.</li>
+                  <li>Все члены семьи — налоговые резиденты России.</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Интерактивные задания -->
+      <section class="section-card">
+        <h3 class="section-title">Интерактивные задания</h3>
+        <div class="interactive-grid">
+          <!-- Тест: Категории льготников -->
+          <div class="calculator">
+            <h4>Тест: Категории льготников</h4>
+            <form id="tax-benefits-test">
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="beneficiary" value="family"> Многодетная семья
+                </label>
+              </div>
+              <div class="form-group">
+                <label>
+                  <input type="radio" name="beneficiary" value="gto"> Участник ГТО
+                </label>
+              </div>
+              <button type="button" id="check-beneficiary-btn">Проверить</button>
+              <div id="tax-benefits-test-result" class="result"></div>
+            </form>
+          </div>
+
+          <!-- Калькулятор налогового вычета -->
+          <div class="calculator">
+            <h4>Калькулятор налогового вычета</h4>
+            <input type="number" id="income-amount" placeholder="Сумма доходов (руб)">
+            <button type="button" id="calculate-tax-deduction-btn">Рассчитать</button>
+            <div id="tax-deduction-calculation-result" class="result"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="section-card" style="text-align: center; margin-top: 2rem;">
+      <p>&copy; 2023 Смарт Учебник. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Тест: Категории льготников
+    document.getElementById('check-beneficiary-btn').addEventListener('click', () => {
+      const selected = document.querySelector('input[name="beneficiary"]:checked');
+      const resultElement = document.getElementById('tax-benefits-test-result');
+      if (selected && selected.value === 'family') {
+        resultElement.textContent = '✅ Правильно! Многодетные семьи имеют право на льготы.';
+        resultElement.className = 'result success';
+      } else {
+        resultElement.textContent = '❌ Неверно. Многодетные семьи имеют право на льготы.';
+        resultElement.className = 'result error';
+      }
+    });
+
+    // Калькулятор налогового вычета
+    document.getElementById('calculate-tax-deduction-btn').addEventListener('click', () => {
+      const incomeAmount = parseFloat(document.getElementById('income-amount').value);
+      const resultElement = document.getElementById('tax-deduction-calculation-result');
+      if (!isNaN(incomeAmount)) {
+        const deduction = incomeAmount * 0.13; // 13% НДФЛ
+        resultElement.textContent = `💰 Сумма налогового вычета: ${deduction.toFixed(2)} руб.`;
+        resultElement.className = 'result success';
+      } else {
+        resultElement.textContent = '⚠️ Пожалуйста, введите корректную сумму доходов.';
+        resultElement.className = 'result error';
+      }
+    });
+
+    // Аккордеон
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('i');
+        header.classList.toggle('active');
+        content.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-up');
+        icon.classList.toggle('fa-chevron-down');
+      });
+    });
+  </script>
+</body>
+</html>

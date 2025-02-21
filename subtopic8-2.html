@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Виды социальных выплат и как их получить - Смарт-учебник</title>
+    <!-- Подключение Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --accent: #818cf8;
+            --background: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #f1f5f9;
+            --glass: rgba(255, 255, 255, 0.9);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --error: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-section {
+            position: relative;
+            margin: 2rem 0 4rem;
+            padding: 4rem 2rem;
+            background: var(--gradient);
+            border-radius: 2rem;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 20px;
+        }
+
+        .features-item {
+            padding: 20px;
+            background: #f9f9fb;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .features-item:hover {
+            transform: translateX(5px);
+            background: #f0f0f2;
+        }
+
+        .features-item i {
+            color: var(--primary);
+            font-size: 20px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .accordion {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f9f9fb;
+            transition: background 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: #f0f0f2;
+        }
+
+        .accordion-header i {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 30px;
+            max-height: 1000px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .section-card {
+                padding: 20px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-image {
+                width: 100%;
+            }
+
+            .features-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animated-image {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title"><i class="fas fa-hand-holding-usd"></i> Виды социальных выплат и как их получить</h1>
+                <p class="hero-description">Узнайте, какие федеральные и региональные выплаты доступны, зачем нужен прожиточный минимум и как начать получать социальные выплаты.</p>
+            </div>
+            <img src="via.placeholder.png" alt="Социальные выплаты" class="hero-image animated-image">
+        </section>
+
+        <div class="section-card">
+            <h2 class="section-title"><i class="fas fa-info-circle"></i> Виды социальных выплат</h2>
+            <p>Теперь разберемся с видами социальных выплат от государства.</p>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Федеральные и региональные выплаты</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Социальные выплаты прежде всего различаются по уровню введения и действия на федеральные и субфедеральные (региональные).</p>
+                        <h3>Федеральные выплаты</h3>
+                        <p>Федеральные социальные выплаты вводятся на общегосударственном уровне, то есть их получение не зависит от региона вашей регистрации и проживания. Такие выплаты чаще всего устанавливаются федеральными законами, постановлениями федерального правительства и указами Президента страны.</p>
+                        <p>К основным федеральным выплатам, которые введены на территории новых субъектов России, относятся:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-user-clock"></i> Государственная пенсия</li>
+                            <li class="features-item"><i class="fas fa-hand-holding-heart"></i> Ежемесячная выплата ветеранам, гражданам с инвалидностью, включая детей-инвалидов, лицам, подвергшимся воздействию радиации и др., родителям на первого ребенка до трех лет и по уходу за ребенком до 1,5 лет</li>
+                            <li class="features-item"><i class="fas fa-baby-carriage"></i> Единовременное пособие при рождении ребенка</li>
+                            <li class="features-item"><i class="fas fa-baby"></i> Материнский капитал</li>
+                            <li class="features-item"><i class="fas fa-female"></i> Пособие по беременности и родам</li>
+                            <li class="features-item"><i class="fas fa-users"></i> Единое пособие на детей и беременных женщин</li>
+                        </ul>
+                        <p>Информацию об основных видах федеральных выплат и условиях их получения жителями новых регионов смотрите <a href="#">ЗДЕСЬ</a>.</p>
+                        <p>Все федеральные меры поддержки, действующие в Российской Федерации, будут доступны и гражданам, проживающим в Донецкой и Луганской народных республиках, Херсонской и Запорожской областях.</p>
+                        <p>Размер федеральных социальных выплат ежегодно индексируется с 1 февраля. На 2025 год коэффициент индексации установлен в размере 1,095, что соответствует уровню инфляции за 2024 год. Это значит, что размер социальных пенсий и пособий вырастет на 9,5%.</p>
+
+                        <h3>Региональные выплаты</h3>
+                        <p>Региональные социальные выплаты вводятся в действие нормативными актами субъектов федерации и, как правило, являются дополняющими к существующим федеральным выплатам. Их получение связано с непосредственной регистрацией получателя выплат на территории субъекта, который эти выплаты осуществляет.</p>
+                        <p>Большинство региональных социальных выплат, прежде всего, компенсационного характера, привязаны к прожиточному минимуму на душу населения (ПМ), утвержденному в данном субъекте Российской Федерации.</p>
+                        <p>Например, от прожиточного минимума (ПМ) в регионе зависят такие соцвыплаты, как:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-users"></i> Единое пособие для беременных и семей с детьми, размер которого устанавливается в определенном проценте от регионального ПМ</li>
+                            <li class="features-item"><i class="fas fa-baby"></i> Ежемесячная выплата из средств материнского семейного капитала</li>
+                            <li class="features-item"><i class="fas fa-user-clock"></i> Доплата к пенсии до прожиточного минимума</li>
+                        </ul>
+                        <p>Прожиточный минимум в каждом регионе ежегодно устанавливается постановлением правительства субъекта Федерации. Прожиточные минимумы и доходы семьи на 2025 год по всем субъектам Российской Федерации можно посмотреть <a href="#">ЗДЕСЬ</a>.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Социальные пособия и компенсационные выплаты</span>
+                    </div>
+                    <div class="accordion-content">
+                        <h3>Социальные пособия</h3>
+                        <p>Основными видами федеральных социальных пособий в Российской Федерации являются следующие:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-file-medical"></i> Пособие по временной нетрудоспособности</li>
+                            <li class="features-item"><i class="fas fa-briefcase"></i> Пособие по безработице</li>
+                            <li class="features-item"><i class="fas fa-baby-carriage"></i> Пособия на детей и уходу за ними:
+                                <ul>
+                                    <li>Пособие по беременности и родам</li>
+                                    <li>Единовременное пособие женщинам, вставшим на учет в медицинских учреждениях в ранние сроки беременности</li>
+                                    <li>Единовременное пособие при рождении ребенка</li>
+                                    <li>Ежемесячное пособие по уходу за ребенком до 1,5 лет</li>
+                                    <li>Ежемесячное пособие на ребенка, установленное в субъекте РФ</li>
+                                    <li>Материнский капитал</li>
+                                    <li>Единовременное пособие при передаче ребенка на воспитание в семью</li>
+                                    <li>Единовременное пособие беременной жене военнослужащего, проходящего военную службу по призыву</li>
+                                    <li>Ежемесячное пособие на ребенка военнослужащего, проходящего военную службу по призыву</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-wheelchair"></i> Ежемесячная денежная выплата (пособие) инвалидам, в том числе детям-инвалидам</li>
+                            <li class="features-item"><i class="fas fa-graduation-cap"></i> Государственная социальная стипендия</li>
+                            <li class="features-item"><i class="fas fa-shield-alt"></i> Пособия защитникам отечества</li>
+                            <li class="features-item"><i class="fas fa-cross"></i> Социальное пособие на погребение</li>
+                        </ul>
+                        <p>Подробную информацию о действующих социальных пособиях на территории вашего региона можно узнать на официальной странице регионального министерства труда и социальной политики (МТСП).</p>
+
+                        <h3>Компенсационные выплаты</h3>
+                        <p>Компенсационные выплаты в рамках социального обеспечения дополняют перечень выплат, осуществляемых через социальные пособия. Они предназначены для лиц, которые при определенных обстоятельствах нуждаются в социальной поддержке.</p>
+                        <p>Виды компенсационных выплат группируются в зависимости от их предназначения:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-user-clock"></i> Пенсионерам:
+                                <ul>
+                                    <li>Социальная доплата до уровня прожиточного минимума пенсионера</li>
+                                    <li>Компенсация проезда к месту отдыха на территории РФ и обратно</li>
+                                    <li>Выплата в связи с юбилеем супружеской жизни на круглые даты начиная с 50 лет брака</li>
+                                    <li>Доплата пенсионерам с иждивенцами</li>
+                                    <li>Ежемесячная компенсационная выплата Героям Советского Союза, Героям Российской Федерации и др.</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-hands-helping"></i> Ухаживающим за нетрудоспособным человеком:
+                                <ul>
+                                    <li>Ежемесячная выплата по уходу за детьми с инвалидностью или инвалидами с детства I группы (10 000 руб.)</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-radiation"></i> Пострадавшим при техногенных авариях:
+                                <ul>
+                                    <li>Ежемесячная компенсация за проживание или работу в зонах радиоактивного загрязнения</li>
+                                    <li>Компенсации пострадавшим вследствие аварии на Чернобыльской АЭС</li>
+                                    <li>Дополнительное ежегодное вознаграждение за выслугу лет работникам организаций, расположенных в зонах радиоактивного загрязнения</li>
+                                    <li>Ежемесячная компенсация в возмещение вреда здоровью инвалидам и нетрудоспособным</li>
+                                    <li>Оплата дополнительного отпуска и единовременная компенсация на оздоровление</li>
+                                    <li>Сохранение среднего заработка на период обучения новым профессиям и трудоустройства</li>
+                                    <li>Ежемесячная компенсация на приобретение продовольственных товаров, на питание детей в образовательных учреждениях</li>
+                                    <li>Единовременная компенсация утраченного имущества и др.</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-graduation-cap"></i> Обучающимся в учебном заведении (стипендии):
+                                <ul>
+                                    <li>Государственная социальная стипендия</li>
+                                    <li>Повышенная государственная стипендия</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-user-shield"></i> Военнослужащим и членам их семей:
+                                <ul>
+                                    <li>Единовременная выплата в случае гибели военнослужащего</li>
+                                    <li>Ежемесячная компенсация членам семьи погибшего военнослужащего-инвалида</li>
+                                    <li>Единовременная компенсация при признании военнослужащего негодным к дальнейшей службе</li>
+                                    <li>Единовременная выплата на ремонт дома</li>
+                                    <li>Ежегодная выплата на летний оздоровительный отдых ребенка</li>
+                                    <li>Ежемесячная компенсация инвалидам вследствие военной травмы и членам семьи погибшего (умершего) военнослужащего и др.</li>
+                                </ul>
+                            </li>
+                            <li class="features-item"><i class="fas fa-user-lock"></i> Реабилитированным жертвам политических репрессий</li>
+                            <li class="features-item"><i class="fas fa-users"></i> Оказавшимся вынужденно переселенным, в том числе выплаты гражданам, вынужденно покинувшим территории Украины, ДНР, ЛНР, Запорожской или Херсонской областей</li>
+                        </ul>
+                        <p>Большинство социальных выплат государство ежегодно индексирует (увеличивает) в соответствии с уровнем инфляции за прошлый год, определенным Росстатом. С 1 февраля 2025 года социальные пособия и меры социальной поддержки проиндексированы на 9,5%.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span><i class="fas fa-chevron-down"></i> Как узнать о положенных социальных выплатах</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Чтобы узнать о положенных социальных выплатах, можно воспользоваться следующими способами:</p>
+                        <ul class="features-list">
+                            <li class="features-item"><i class="fas fa-laptop"></i> В личном кабинете на «Госуслугах», в том числе на региональном портале госуслуг. Можно заказать выписку из Единой государственной информационной системы социального обеспечения (ЕГИССО), в которой будут данные о необходимых выплатах, их размере, сроке, на который они назначены, а также периодичность выплат.</li>
+                            <li class="features-item"><i class="fas fa-globe"></i> На официальных сайтах органа власти (правительства субъекта Федерации), регионального министерства труда и социальной политики.</li>
+                            <li class="features-item"><i class="fas fa-phone"></i> В Центре консультирования Социального фонда. На официальной странице Центра можно узнать о федеральных выплатах, которые действуют для каждого гражданина Российской Федерации, и о выплатах, которые есть в разных регионах.</li>
+                            <li class="features-item"><i class="fas fa-building"></i> В МФЦ.</li>
+                        </ul>
+                        <p>На официальном портале «Госуслуги» можно настроить автоматическое оповещение о праве на выплаты. При изменении ваших жизненных обстоятельств (рождении ребенка, достижение пенсионного возраста и др.) у вас автоматически возникнет право на назначение соответствующих выплат.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Аккордеон
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                const isActive = content.classList.contains('active');
+
+                // Закрыть все открытые аккордеоны
+                document.querySelectorAll('.accordion-content.active').forEach(activeContent => {
+                    activeContent.classList.remove('active');
+                    activeContent.previousElementSibling.querySelector('i').classList.remove('active');
+                });
+
+                // Открыть текущий аккордеон, если он не был активен
+                if (!isActive) {
+                    content.classList.add('active');
+                    icon.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
